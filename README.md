@@ -4,22 +4,24 @@ Man pages are an impressive feat!
 
 Some of them however, are very unwieldy and hard to navigate.
 
-For instance, let's say I was looking for the syntax for the built-in `declare` command inside of `bash(1)`.
+Let's say I was looking for the syntax for the built-in `declare` command inside of `bash(1)`.
 
 I would do
 
     $ man bash
 
-Then just simply search for the string "declare" with the "/" command!
+Then just simply search for the string "declare" with the "/" command! Easy peasy!
 
 Here's the problem:
 
     $ man bash | grep -c declare
     34
 
-There's 34 of them. I'll have to go through.
+There's 34 of them. I'll have to go through all by using the 'n' keystroke, which here stands for 'nope, nope, nope'. 
 
-"Oh wait", someone in the peanut gallery says "there's a faster way"
+If I were to look for the syntax to the bash built-in command named `command` I'd be faced with a daunting 615 matches. Oh dear.
+
+"Oh wait", someone in the peanut gallery says "there's a faster way".
 
 Ok, here's the fastest I know of. Let's roll
 
@@ -29,9 +31,9 @@ Ok, here's the fastest I know of. Let's roll
       &[enter]  turn off the filtered view
       g(number) go to that line
 
-And there you go. Ah yes, I remember the 1980s as well. 
+And there you go. I remember navigating in the 1980s as well. 
 
-This is all insane. Why is this basic functionality not there?
+This is insane. Why is this basic functionality not there?
 
 ## Wouldn't it be nice to just get the part you want?
 
