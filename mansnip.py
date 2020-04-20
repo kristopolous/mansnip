@@ -2,7 +2,7 @@
 import sys
 import re
 
-# The bastard less, has this:
+# The bastard less, has this for its "-h" documentation:
 #
 #       -hn or --max-back-scroll=n
 #              Specifies  a  maximum number of lines to scroll backward.  If it
