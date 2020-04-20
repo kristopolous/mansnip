@@ -11,13 +11,9 @@ Welllll, here's the problem:
     $ man bash | grep -c declare
     34
 
-There's 34 of them. I'll have to go through all matches by using the 'n' keystroke, which here stands for 'nope, nope, nope'. 
+There's 34 of them. You'll need to incrementally slodge through them using the 'n' key, which here stands for 'nope, nope, nope'. 
 
-If I were to instead look for the syntax to the bash built-in command named `command` I'd be faced with a daunting 615 matches. Oh dear...
-
-"Oh wait", someone in the peanut gallery says "there's a faster way".
-
-Ok, here's the fastest I know of. Let's roll
+Here's the fastest optimization I know of. Let's roll
 
     $ man bash
       -N        turn line numbering on
