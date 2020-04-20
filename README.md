@@ -13,9 +13,9 @@ Welllll, here's the problem:
     $ man bash | grep -c declare
     34
 
-There's 34 of them. You'll need to incrementally slodge through them using the 'n' key, which here stands for 'nope, nope, nope'. 
+You'll need to incrementally slodge through 34 of them using the 'n' key, which here stands for 'nope, nope, nope'. 
 
-Here's the fastest optimization I know of. Let's roll
+This is the best optimization I know of:
 
     $ man bash
       -N        turn line numbering on
@@ -23,7 +23,7 @@ Here's the fastest optimization I know of. Let's roll
       &[enter]  turn off the filtered view
       g(number) go to that line
 
-And there you go. I remember navigating in the 1980s as well. 
+There you go. I remember navigating in the 1980s as well. 
 
 This is insane. Why is this basic functionality not there?
 
