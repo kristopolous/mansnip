@@ -29,7 +29,7 @@ This is insane. Why is this basic functionality not there?
 
 ## Introducting Mansnip! 
 
-Yes, why does this not exist? Why can't I just do something like this:
+Why can't I just do something like this:
 
     $ man bash | mansnip declare
            declare [-aAfFgilnrtux] [-p] [name[=value] ...]
