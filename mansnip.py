@@ -13,12 +13,8 @@ import re
 # 'n' is pretty universal AND - usually isn't 2 characters (with a number of notable
 # exceptions such as sendmail) 
 #
-pack = []
-for i in sys.argv[1:]:
-    if i[0] == '-' and len(i) == 2:
-        pack.append("{}n".format(i))
-    pack.append(i)
-
+pack = sys.argv[1:]
+pack += map(lambda x: x + "n", filter(lambda x: x[0] == '-' and len(x) == 2, pack))
 my_re = '^\s*({})(\s.*$|$)'.format('|'.join(pack))
 
 is_def = False
