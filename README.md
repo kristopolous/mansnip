@@ -77,9 +77,9 @@ Alright, what do those things mean? You can see that in `man 7 man` or actually,
        .PD d    Set  inter-paragraph  vertical  distance to d (if omitted, d=0.4v); does not cause a
                 break.
 
-Hrmm, well that's a problem. It's effectively just a stylesheet. In fact, the format doesn't look fundamentally different than it did in [UNIX v0 in 1970](https://github.com/DoctorWkt/pdp7-unix/blob/master/man/stat.1). A mere 2 years after Engelbart demoed a prototype hyperlink system, this is well before the semantic web.
+Hrmm, well that's a problem. It's effectively just a stylesheet. In fact, the format doesn't look fundamentally different than it did in [UNIX v0 in 1970](https://github.com/DoctorWkt/pdp7-unix/blob/master/man/stat.1). A mere 2 years after [Engelbart demoed a prototype hypertext](https://en.wikipedia.org/wiki/The_Mother_of_All_Demos) system, this is well before the [semantic web](https://en.wikipedia.org/wiki/Semantic_Web).
 
-"But wait," you say. "If I do `man --html bash` and then wait for the glacially slow groff HTML post-processor I do indeed get links!"
+"But wait," you say. "If I do `man --html bash` and then wait for the glacially slow [groff HTML post-processor](http://git.savannah.gnu.org/cgit/groff.git/tree/src/devices/grohtml) I do indeed get links!"
 
 Yes, the only two semantic concessions given in the modern man format is `.SH` which is for sections and `.TH` for the title and ... that's ... it.
 
