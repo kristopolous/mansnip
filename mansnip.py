@@ -11,7 +11,7 @@ indent_window = []
 
 for line in sys.stdin:
     line = line.strip('\n')
-    indent = re.match('^(\s*)', line).end()
+    indent = re.match('^(\s*)', line, re.I).end()
     indent_window = indent_window[-2:] + [indent]
 
     res = re.match(my_re, line)
