@@ -1,4 +1,4 @@
-### The problem.
+### The Problem
 
 Man pages are an impressive feat! 
 
