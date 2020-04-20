@@ -1,6 +1,7 @@
 # Just the snippets of man you want
 
 Man pages are an impressive feat! 
+
 Some of them however, are very unwieldy and hard to navigate.
 
 For instance, let's say I was looking for the syntax for the built-in `declare` command inside of `bash(1)`.
