@@ -91,7 +91,7 @@ Hrmm, well that's a problem. It's effectively just a stylesheet. In fact, the fo
 
 "But wait," you say. "If I do `man --html bash` and then wait for the glacially slow groff HTML post-processor I do indeed get links!"
 
-Yes, the only two semantic concessions given in the modern man format is `.SH` which is for sections and `.TH` for the title (they also have stylistic definitions as well - the separation of concerns isn't there).  
+Yes, the only two semantic concessions given in the modern man format is `.SH` which is for sections and `.TH` for the title and ... that's ... it.
 
 "Well let's fix this!" you say! 
 
