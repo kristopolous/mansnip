@@ -1,8 +1,10 @@
-**Man** pages are an impressive feat! 
+### The problem.
+
+Man pages are an impressive feat! 
 
 Some however, are very unwieldy and hard to navigate.
 
-Let's say I was looking for the syntax of the built-in `declare` command inside of `bash(1)`: 
+Let's say you wanted syntax of the built-in `declare` command inside of `bash(1)`: 
 
 > I fire up `man bash` and just simply search for the string "declare" with the "/" command! Easy peasy!
 
