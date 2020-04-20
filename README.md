@@ -96,7 +96,7 @@ Uh, yep.
 
 ### It's not that terrible though!
 
-Man pages are ridiculously consistent as far as non-semantically structured text goes.  This tool usually works fine and if it doesn't, file a bug and go hunting and pecking like you usually do for now. I'll fix it eventually.
+Man pages are ridiculously consistent as far as non-semantically structured text goes.  This tool usually works fine and if it doesn't, file a bug and go hunting and pecking like you usually do. I'll fix it eventually.
 
 Thanks. enjoy.
 
