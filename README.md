@@ -89,7 +89,7 @@ Alright, what do those things mean? You can see that in `man 7 man` or actually,
 
 Hrmm, well that's a problem. It's effectively just a stylesheet. In fact, the format doesn't look fundamentally different than it did in [UNIX v0 in 1970](https://github.com/DoctorWkt/pdp7-unix/blob/master/man/stat.1). A mere 2 years after Engelbart demoed a prototype hyperlink system, this is well before the semantic web.
 
-"But wait," you say. "If I do `man -html bash` and then wait for the glacially slow groff HTML post-processor I do indeed get links!"
+"But wait," you say. "If I do `man --html bash` and then wait for the glacially slow groff HTML post-processor I do indeed get links!"
 
 Yes, the only two semantic concessions given in the modern man format is `.SH` which is for sections and `.TH` for the title (they also have stylistic definitions as well - the separation of concerns isn't there).  
 
