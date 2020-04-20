@@ -74,7 +74,7 @@ Anyway, so inside the document source that leads to the pretty man page, there i
 
 Alright, what do those things mean? You can see that in `man 7 man` or actually, 
 
-    $  man 7 man | mansnip .TP .PD 
+    $  man 7 man | mansnip .TP .PD .B .P .I
        .B  Bold
 
        .I  Italics
