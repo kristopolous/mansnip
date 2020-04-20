@@ -55,7 +55,7 @@ man pages don't really encode a lot of semantic detail. The format is pretty old
 
 Being old, it's primarily concerned with formatting and not any kind of meta-information. And boy can it format! Try using the `groffer(1)` tool and do something like `groffer ffmpeg`. You'll hopefully get a very beautiful PDF popping up on your screen, excellent for printing out and keeping in a 3-ring binder next to your Rolodex and FAX machine. Did you know groff is in a lineage that goes back to the [1964 RUNOFF](https://en.wikipedia.org/wiki/TYPSET_and_RUNOFF) program on MIT's IBM 7094 CTSS? A mere year after Licklider's [Intergalactic Computer Network](https://en.wikipedia.org/wiki/Intergalactic_Computer_Network) memo leading to what you *probably* call "the internet" these days.
 
-Anyway, so inside the document source that leads to the pretty man page, there is next to no indication that something is special. Let's go back to `bash(1)` and specifically the source lines for "declare" and "typeset":
+Anyway, so inside the document source that leads to the pretty man page, there is next to no indication whether something has any special meaning. Let's go back to `bash(1)` and specifically the source lines for "declare" and "typeset":
 
     .TP
     \fBdeclare\fP [\fB\-aAfFgilnrtux\fP] [\fB\-p\fP] [\fIname\fP[=\fIvalue\fP] ...]
