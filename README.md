@@ -64,11 +64,11 @@ Alright, what do those things mean? You can see that in `man 7 man` or actually,
 
 Hrmm, well that's a problem. It's effectively just a style-sheet.
 
-"But wait," you say. "If I do man -html bash and then wait for the glacially slow groff html post processor I do indeed get links!"
+"But wait," you say. "If I do `man -html bash` and then wait for the glacially slow groff HTML post-processor I do indeed get links!"
 
 Yes, the only two semantic concessions given in the man format is `.SH` which is for sections and `.TH` for the title.
 
-"So there's no surefire easy way to do this, you can only guess?"
+"So there's no surefire easy way to do this then, you can only guess?"
 
 Uh, yep, lol.
 
