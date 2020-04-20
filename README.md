@@ -104,9 +104,7 @@ Uh, yep.
 
 ### It's not that terrible though!
 
-Man pages are ridiculously consistent as far as non-semantically structured text goes.  It seems to work fine and if it doesn't, you can just go hunting and pecking like you usually do.
+Man pages are ridiculously consistent as far as non-semantically structured text goes.  This tool usually works fine and if it doesn't, file a bug and go hunting and pecking like you usually do for now. I'll fix it eventually.
 
-### This code looks really simple
-
-Yeah, not everything that's useful is necessarily hard.
+Thanks. enjoy.
 
