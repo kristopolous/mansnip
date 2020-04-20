@@ -2,9 +2,9 @@
 
 Man pages are an impressive feat! 
 
-Some of them however, are very unwieldy and hard to navigate.
+Some however, are very unwieldy and hard to navigate.
 
-Let's say I was looking for the syntax for the built-in `declare` command inside of `bash(1)`.
+Let's say I was looking for the syntax of the built-in `declare` command inside of `bash(1)`.
 
 I would do
 
@@ -12,14 +12,14 @@ I would do
 
 Then just simply search for the string "declare" with the "/" command! Easy peasy!
 
-Here's the problem:
+Welllll, here's the problem:
 
     $ man bash | grep -c declare
     34
 
-There's 34 of them. I'll have to go through all by using the 'n' keystroke, which here stands for 'nope, nope, nope'. 
+There's 34 of them. I'll have to go through all matches by using the 'n' keystroke, which here stands for 'nope, nope, nope'. 
 
-If I were to look for the syntax to the bash built-in command named `command` I'd be faced with a daunting 615 matches. Oh dear.
+If I were to instead look for the syntax to the bash built-in command named `command` I'd be faced with a daunting 615 matches. Oh dear...
 
 "Oh wait", someone in the peanut gallery says "there's a faster way".
 
