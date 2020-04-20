@@ -1,4 +1,4 @@
-# Just the snippets of man you want
+### Background
 
 Man pages are an impressive feat! 
 
@@ -35,7 +35,7 @@ And there you go. I remember navigating in the 1980s as well.
 
 This is insane. Why is this basic functionality not there?
 
-## Wouldn't it be nice to just get the part you want?
+## Introducting Mansnip! 
 
 Yes, why does this not exist? Why can't I just do something like this:
 
