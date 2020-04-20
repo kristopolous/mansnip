@@ -47,7 +47,7 @@ Why can't I just do something like this:
            ...
     $
 
-Well, now you can! (ok that was obvious, that's why I'm talking about it...)
+Well, now you can! (ok that was a little obvious)
 
 ## Why hasn't this existed forever?
 
