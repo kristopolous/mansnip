@@ -1,10 +1,8 @@
 #!/usr/bin/python3
-
 import sys
 import re
 
-term = sys.argv[1]
-my_re = '^\s*{}(\s.*$|$)'.format(term)
+my_re = '^\s*({})(\s.*$|$)'.format('|'.join(sys.argv[1:]))
 
 is_def = False
 buf = []
@@ -12,10 +10,8 @@ term_indent = False
 indent_window = []
 
 for line in sys.stdin:
-
     line = line.strip('\n')
     indent = re.match('^(\s*)', line).end()
-
     indent_window = indent_window[-2:] + [indent]
 
     res = re.match(my_re, line)
