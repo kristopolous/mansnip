@@ -5,6 +5,7 @@ import re
 my_re = '^\s*({})(\s.*$|$)'.format('|'.join(sys.argv[1:]))
 
 is_def = False
+line_def = False
 buf = []
 term_indent = False
 indent_window = []
@@ -33,7 +34,17 @@ for line in sys.stdin:
         if indent_window[0] > indent and indent_window[1] == 0:
             is_def = True
 
-        #print(indent_window, is_def)
+        # From man 7 man we get things like this:
+        #  .I  Italics
+        #
+        #  .IB Italics alternating with bold
+        #
+        #  .IR Italics alternating with Roman
+        #
+        elif indent_window[0] == indent and indent_window[1] == 0:
+            line_def = True
+
+        #print(indent_window, is_def, line_def)
         #print("<{}>".format(res[1]))
 
         buf.append(line)
@@ -42,7 +53,7 @@ for line in sys.stdin:
     elif term_indent:
         #print(indent, term_indent)
         if indent > 1 and (indent < term_indent or (not is_def and indent == term_indent)):
-            if len(buf) > 2:
+            if (len(buf) == 2 and indent == term_indent and line_def) or len(buf) > 2:
                 print('\n'.join(buf))
             buf = []
             term_indent = False
