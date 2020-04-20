@@ -2,7 +2,24 @@
 import sys
 import re
 
-my_re = '^\s*({})(\s.*$|$)'.format('|'.join(sys.argv[1:]))
+# The bastard less, has this:
+#
+#       -hn or --max-back-scroll=n
+#              Specifies  a  maximum number of lines to scroll backward.  If it
+#              is necessary to scroll backward more than n lines, the screen is
+#              repainted in a forward direction instead.  (If the terminal does
+#              not have the ability to scroll backward, -h0 is implied.)
+#
+# 'n' is pretty universal AND - usually isn't 2 characters (with a number of notable
+# exceptions such as sendmail) 
+#
+pack = []
+for i in sys.argv[1:]:
+    if i[0] == '-' and len(i) == 2:
+        pack.append("{}n".format(i))
+    pack.append(i)
+
+my_re = '^\s*({})(\s.*$|$)'.format('|'.join(pack))
 
 is_def = False
 line_def = False
