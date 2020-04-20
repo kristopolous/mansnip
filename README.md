@@ -1,6 +1,4 @@
-### Background
-
-Man pages are an impressive feat! 
+**Man** pages are an impressive feat! 
 
 Some however, are very unwieldy and hard to navigate.
 
