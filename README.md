@@ -51,7 +51,7 @@ Well, now you can! (ok that was obvious, that's why I'm talking about it...)
 
 ## Why hasn't this existed forever?
 
-man pages don't really encode a lot of semantic detail. The format is pretty old. There's been a number of replacements, such as [GNU info](https://www.gnu.org/software/texinfo/manual/info-stnd/) and [BSD mdoc](https://mandoc.bsd.lv/) (`man 7 mandoc_mdoc`) but the ones you have on your system are probably boring old man files. Ah, inertia.
+Man pages don't really encode a lot of semantic detail. The format is pretty old. There's been a number of replacements, such as [GNU info](https://www.gnu.org/software/texinfo/manual/info-stnd/) and [BSD mdoc](https://mandoc.bsd.lv/) (`man 7 mandoc_mdoc`) but the ones you have on your system are probably boring old man files. Ah, inertia.
 
 Being old, it's primarily concerned with formatting and not any kind of meta-information. And boy can it format! Try using the `groffer(1)` tool and do something like `groffer ffmpeg`. You'll hopefully get a very beautiful PDF popping up on your screen, excellent for printing out and keeping in a 3-ring binder next to your Rolodex and FAX machine. Did you know groff is in a lineage that goes back to the [1964 RUNOFF](https://en.wikipedia.org/wiki/TYPSET_and_RUNOFF) program on MIT's IBM 7094 CTSS? A mere year after Licklider's [Intergalactic Computer Network](https://en.wikipedia.org/wiki/Intergalactic_Computer_Network) memo leading to what you *probably* call "the internet" these days.
 
