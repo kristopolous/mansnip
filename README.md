@@ -52,6 +52,10 @@ You even get the line number and context for further investigation.
 
 Pssttt ... it's also [on pypi](https://pypi.org/project/mansnip-kristopolous/): `pip3 install mansnip-kristopolous`
 
+Here's a rather fancy demo for looking for the documentation for every "-z" option in all of the zsh man pages (zshall)
+
+![zshall for all](http://i.9ol.es/mansnip.webp)
+
 ## Why hasn't this existed forever?
 
 Man pages don't really encode a lot of semantic detail. The format is pretty old. There's been a number of attempted replacements, such as [GNU info](https://www.gnu.org/software/texinfo/manual/info-stnd/) and [BSD mdoc](https://mandoc.bsd.lv/) (`man 7 mandoc_mdoc`) but the ones you use on your system are probably just the traditional boring old man files. Ah, inertia.
@@ -111,8 +115,3 @@ Man pages are ridiculously consistent as far as non-semantically structured text
 
 Thanks. enjoy.
 
-#### Bonus round!
-
-Here's a rather fancy demo for looking for the documentation for every "-z" option in all of the zsh man pages (zshall)
-
-![zshall for all](http://i.9ol.es/mansnip.webp)
