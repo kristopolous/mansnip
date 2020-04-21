@@ -34,6 +34,7 @@ term_indent = False
 indent_window = []
 stack_guess = []
 stack_indent = []
+last_stack_guess = []
 
 # There's lots of let's say "creative" ways to format man pages, so
 # we have a plain-text version in case our sophisticated searching
@@ -104,11 +105,23 @@ for line_num, line in enumerate(man_input):
                 while not len(buf[0]): buf = buf[1:]
                 while not len(buf[-1]): buf = buf[:-1]
 
-                stack_print = stack_start[0]
-                if len(stack_start) > 2:
-                    stack_print += spacer + spacer.join(stack_start[1:-1])
+                stack_small = stack_start[:]
+                for i in range(0, min(len(last_stack_guess),len(stack_start))):
+                    if last_stack_guess[i] == stack_start[i]:
+                        stack_small = stack_small[1:]
 
-                print("{:<6}{}\n{}\n".format(buf_start, stack_print, '\n'.join(buf)))
+                last_stack_guess = stack_start[:]
+
+                if len(stack_small) > 1:
+                    stack_print = stack_small[0]
+                    if len(stack_small) > 2:
+                        stack_print += spacer + spacer.join(stack_small[1:-1])
+                    stack_print += "\n"
+                else:
+                    stack_print = ''
+                    buf[0] = re.sub('^\s{6}', '', buf[0])
+
+                print("{:<6}{}{}\n".format(buf_start, stack_print, '\n'.join(buf)))
 
             buf = []
             term_indent = False
