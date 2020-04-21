@@ -47,6 +47,8 @@ Why can't I just do something like this:
 
 Well, now you can! (ok that was a little obvious)
 
+Pssttt ... it's also on pypi: "pip3 install mansnip-kristopolous"
+
 ## Why hasn't this existed forever?
 
 Man pages don't really encode a lot of semantic detail. The format is pretty old. There's been a number of attempted replacements, such as [GNU info](https://www.gnu.org/software/texinfo/manual/info-stnd/) and [BSD mdoc](https://mandoc.bsd.lv/) (`man 7 mandoc_mdoc`) but the ones you use on your system are probably just the traditional boring old man files. Ah, inertia.
