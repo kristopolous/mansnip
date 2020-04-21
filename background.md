@@ -1,3 +1,17 @@
+## Pre-history
+
+Here were the two methods before:
+
+ * "search with a leading space" and
+
+
+  * `man bash `
+  * `-N       ` turn line numbering on
+  * `&declare ` show all the results for "declare", scan them (remember the line number for which one you want)
+  * `&[enter] ` turn off the filtered view
+  * `g(number)` go to that line
+
+
 ## Why hasn't this existed forever?
 
 Man pages don't really encode a lot of semantic detail. The format is pretty old. There's been a number of attempted replacements, such as [GNU info](https://www.gnu.org/software/texinfo/manual/info-stnd/) and [BSD mdoc](https://mandoc.bsd.lv/) (`man 7 mandoc_mdoc`) but the ones you use on your system are probably just the traditional boring old man files. Ah, inertia.
