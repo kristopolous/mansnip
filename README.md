@@ -30,9 +30,13 @@ Watch how mansnip shows everything with a "-z" option in the 25,888 lines of the
 
 But wait, there's more! You'll also get the line number and hierarchical context totally free!
 
-You'll even get to install it easily [through pypi](https://pypi.org/project/mansnip-kristopolous/). 
+*We're still not finished yet!*
 
-Here's how do it `pip3 install mansnip-kristopolous`. 
+You'll also get to install it easily [through pypi](https://pypi.org/project/mansnip-kristopolous/). 
+
+Here's how do it 
+
+`$ pip3 install mansnip-kristopolous`. 
 
 Act now, servers are standing by.
 
