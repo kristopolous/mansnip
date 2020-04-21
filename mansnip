@@ -51,22 +51,28 @@ filler_terms = ['DESCRIPTION','OPTIONS']
 
 clean_ansi = lambda w: re.sub('(.\x08)', '', w)
 
+#
 # There's lots of let's say "creative" ways to format man pages, so
 # we have a plain-text version in case our sophisticated searching
 # method fails.
+#
 man_input_plain = clean_ansi(man_input).split('\n')
 man_input = man_input.split('\n')
 
+#
 # We try to output something nice and readable. If the input is a
 # lot of lines, say zshall (all of zsh), then we set aside a bit of
 # space for the indentation.
+#
 rs = 5 if len(man_input) < 1e4 else 7
 
 for line_num, line in enumerate(man_input):
     line = line.strip('\n')
 
+    #
     # Establish the "indent", this is crucial to how essentially 
     # everything works.
+    #
     indent = re.match('^(\s*)', line).end()
     indent_window = indent_window[-2:] + [indent]
 
@@ -76,9 +82,40 @@ for line_num, line in enumerate(man_input):
         # Our nice stack guessing system essentially keeps a stack
         # of the indents and then based on the current indent either
         # pushes or pops on to the stack.
-        while len(stack_indent) and indent <= stack_indent[-1]:
-            stack_indent.pop()
-            stack_guess.pop()
+
+        #
+        # This one is kinda tricky. If we are looking for -z in say, zshall
+        #
+        #         zcompile [ -U ] [ -z | -k ] [ -R | -M ] file [ name ... ]
+        #         zcompile -ca [ -m ] [ -R | -M ] file [ name ... ]
+        #         zcompile -t file [ name ... ]
+        #               -z  
+        #
+        # Is what we want. So what we want is a longer version of what we currently have
+        #
+        # But it gets trickier since we suppress empty lines in this algorithm.
+        # 
+        #         r      Same as fc -e -.
+        #
+        #         read [ -rszpqAclneE ] [ -t [ num ] ] [ -k [ num ] ] [ -d delim ]
+        #              [ -u n ] [ name[?prompt] ] [ name ...  ]
+        #
+        # Also from zsh, will be interpreted as a group, so we have to just this once
+        # use our real indent tracker to catch it.
+        #
+        if len(stack_indent) and indent == stack_indent[-1] and indent_window[-2] != 0:
+            #
+            # Historically string growing like this was always dog, I don't know
+            # if it's still super slow. Mostly of the time we won't actually be using
+            # it. Since we aren't doing a stream, we could just reconstruct it by
+            # storing "pointers" (indexes here) ... sometime in the future.
+            #
+            stack_guess[-1] += '\n' + man_input[line_num]
+
+        else:
+            while len(stack_indent) and indent <= stack_indent[-1]:
+                stack_indent.pop()
+                stack_guess.pop()
 
         if not len(stack_indent) or indent > stack_indent[-1]:
             stack_indent.append(indent)
@@ -91,6 +128,7 @@ for line_num, line in enumerate(man_input):
         res = re.match(my_re, line) or re.match(my_re, man_input_plain[line_num])
 
         if res:
+            #
             # This is sheer frantic handwaving for things like this (From bash)
             #
             #  declare [-aAfFgilnrtux] [-p] [name[=value] ...]
@@ -108,7 +146,9 @@ for line_num, line in enumerate(man_input):
             if indent_window[0] > indent and indent_window[1] == 0:
                 is_def = True
 
+            #
             # From man 7 man we get things like this:
+            #
             #  .I  Italics
             #
             #  .IB Italics alternating with bold
@@ -129,6 +169,7 @@ for line_num, line in enumerate(man_input):
            )):
             spacer = '\n' + ' ' * rs
             if (len(buf) == 2 and indent == term_indent and line_def) or len(buf) > 2:
+                #
                 # This is a lot of fancy formatting. We want the
                 # vertical whitespace between the heading and snippet to be consistent.
                 # If we simply removed the empty lines then it would dump the interstitial
@@ -140,8 +181,10 @@ for line_num, line in enumerate(man_input):
                 #
                 buf = '\n'.join(buf).strip('\n').split('\n')
 
+                #
                 # If we show the same breadcrumb every time it gets kinda laborious and 
                 # repetitive so we cleverly hide the redundancy. 
+                #
                 stack_small = stack_start[:]
                 for i in range(0, min(len(last_stack_guess),len(stack_start))):
                     if last_stack_guess[i] == stack_start[i]:
@@ -152,10 +195,11 @@ for line_num, line in enumerate(man_input):
                 if len(stack_small) > 1:
                     if clean_ansi(stack_small[0]) in filler_terms:
                         stack_small = stack_small[1:]
-
+                #
                 # Now we have to figure out how to print it out to make it look right.
                 # Sometimes it can be inline. The %/fmt double formatting trick comes 
                 # in handle here.
+                #
                 if len(stack_small) > 1:
                     stack_print = stack_small[0]
                     if len(stack_small) > 2:
