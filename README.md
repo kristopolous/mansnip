@@ -1,8 +1,8 @@
 **Don't you hate** wasting your time navigating through manpages with the clunky search tools of less?
 
-Try to find the usage of "declare" built-in in the bash man page and you'll need to incrementally slodge through 34 results using the 'n' key, which here stands for 'nope, nope, nope'. 
+Ever try to find the usage of things like the "declare" built-in in the bash(1) man page only to incrementally slodge through 34 results using the 'n' key going 'nope, nope, nope'. 
 
-Even the methods of experts struggle to fix these basic problems.
+Even the methods of experts struggle to fix these problems.
 
     $ man bash
       -N        turn line numbering on
@@ -10,7 +10,7 @@ Even the methods of experts struggle to fix these basic problems.
       &[enter]  turn off the filtered view
       g(number) go to that line
 
-Let's finally leave the 1980s ways of stumbling through manuals behind us. Let's say goodbye to these problems once and for all!
+Let's finally leave the 1980s ways of stumbling through manuals behind us and say goodbye to these problems once and for all!
 
 ## Introducting Mansnip! 
 
