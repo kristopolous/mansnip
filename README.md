@@ -1,6 +1,6 @@
-**Don't you hate** wasting time navigating through manpages with those leading pager's clunky search tools?
+**Don't you hate** wasting time navigating through manpages with the leading pager's clunky search tools?
 
-Ever try to find things like the "declare" built-in in the `bash(1)` man page only to incrementally slodge through 34 results using the 'n' key going 'nope, nope, nope'? 
+Ever try to find things like the "declare" built-in in the `bash(1)` manpage only to incrementally slodge through 34 results using the 'n' key going 'nope, nope, nope'? 
 
 ![the old way](http://i.9ol.es/animate.gif)
 
@@ -24,7 +24,7 @@ Mansnip is a revolutionary way to navigate through manpages, a tool that no term
 
 **With mansnip** you'll just zip through documentation, saving precious time you can use to write github readmes like you're trying to sell ginsu steak knives.
 
-Watch how mansnip shows everything with a "-z" option in the 25,888 lines of the zsh man pages.
+Watch how mansnip shows everything with a "-z" option in the 25,888 lines of the [zshall manpage](http://gsp.com/cgi-bin/man.cgi?section=1&topic=zshall).
 
 ![zshall for all](http://i.9ol.es/mansnip.webp)
 
