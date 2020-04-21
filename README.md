@@ -31,7 +31,7 @@ Mansnip works on any manpage.
 
 **With mansnip** you'll just zip through documentation, saving precious time you can use to write github readmes like you're trying to sell ginsu steak knives.
 
-Watch how mansnip shows everything with a "-z" option in the 25,888 lines of the [zshall manpage](http://gsp.com/cgi-bin/man.cgi?section=1&topic=zshall).
+Watch how mansnip shows everything with a "-z" option in the 25,888 lines of the [zshall manpage](http://gsp.com/cgi-bin/man.cgi?section=1&topic=zshall) on a single screen, all at once, in an easy-to-read manner.
 
 ![zshall for all](http://i.9ol.es/mansnip.webp)
 
