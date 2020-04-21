@@ -16,9 +16,11 @@ I've been using these older workflows for 20+ years really without questioning i
 
 I thought "surely there's like an xpath system here where I can do some * queries or display a tree hierarchy... I'm clearly just doing this in a bonehead manner"
 
-I looked and there wasn't.
+I looked for these and they didn't exist. The regex and cycle method was the best way there was.
 
-Shocking. So I built one.
+Shocking. 
+
+So I built something better.
 
 ## Why hasn't something like mansnip existed forever?
 
