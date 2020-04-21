@@ -1,12 +1,10 @@
 ### The Problem
 
-Some man pages can be very unwieldy and hard to navigate.
-
-Let's say you were looking for the syntax of the built-in `declare` command inside of `bash(1)`: 
+Some man pages can be very unwieldy and hard to navigate.  Let's say you were looking for the syntax of the built-in `declare` command inside of `bash(1)`: 
 
 > I fire up `man bash` and just simply search for the string "declare" with the "/" command! Easy peasy!
 
-Welllll, here's the problem:
+Here's the problem:
 
     $ man bash | grep -c declare
     34
@@ -46,15 +44,15 @@ Why can't I just do something like this:
            ...
     $
 
-Well, now you can! (ok that was a little obvious)
+Well, now you can! 
 
-You even get the line number and context for further investigation.
-
-Pssttt ... it's also [on pypi](https://pypi.org/project/mansnip-kristopolous/): `pip3 install mansnip-kristopolous`
-
-Here's a rather fancy demo for looking for the documentation for every "-z" option in all of the zsh man pages (zshall)
+Watch how mansnip shows everything with a "-z" option in the 25,888 lines of the zsh man pages (zshall)
 
 ![zshall for all](http://i.9ol.es/mansnip.webp)
+
+But wait, there's more! You'll also get the line number and hierarchical context totally free!
+
+You'll even get to install it easily [through pypi](https://pypi.org/project/mansnip-kristopolous/): `pip3 install mansnip-kristopolous`
 
 ## Why hasn't this existed forever?
 
