@@ -2,7 +2,7 @@
 
 Here were the two methods of searching before I made this tool:
 
- * "search with a leading space" 
+ * Search with a leading space, sometimes "  -t" with two spaces, sometimes with one, etc... Very imprecise
 
 And when using less as the pager
 
