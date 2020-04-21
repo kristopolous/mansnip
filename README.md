@@ -30,7 +30,9 @@ But wait, there's more! You'll also get the line number and hierarchical context
 
 You'll even get to install it easily [through pypi](https://pypi.org/project/mansnip-kristopolous/). 
 
-Here's how do it `pip3 install mansnip-kristopolous`. Act now, servers are standing by.
+Here's how do it `pip3 install mansnip-kristopolous`. 
+
+Act now, servers are standing by.
 
 ＦＡＤＥ ＴＯ  ＢＬＡＣＫ
 
