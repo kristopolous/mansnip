@@ -2,6 +2,8 @@
 
 Ever try to find things like the "declare" built-in in the `bash(1)` man page only to incrementally slodge through 34 results using the 'n' key going 'nope, nope, nope'?
 
+![the old way](http://i.9ol.es/animate.gif)
+
 Even the methods of experts struggle to fix these problems.
 
     $ man bash
@@ -16,7 +18,7 @@ Let's finally leave the 1980s ways of stumbling through manuals behind us and sa
 
 Mansnip is a revolutionary way to navigate through manpages, a tool that no terminal should be without!
 
-![zshall for all](http://i.9ol.es/msfade.webp)
+![mansnip is amazing](http://i.9ol.es/msfade.webp)
 
 **With mansnip** you'll just zip through documentation, saving precious time you can use to write github readmes like you're trying to sell ginsu steak knives.
 
