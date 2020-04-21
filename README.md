@@ -111,3 +111,8 @@ Man pages are ridiculously consistent as far as non-semantically structured text
 
 Thanks. enjoy.
 
+#### Bonus round!
+
+Here's a rather fancy demo for looking for the documentation for every "-z" option in all of the zsh man pages (zshall)
+
+![zshall for all](http://i.9ol.es/mansnip.webp)
