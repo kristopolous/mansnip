@@ -29,15 +29,20 @@ Introducing the revolutionary way to navigate through manpages, only with mansni
 
 ![zshall for all](http://i.9ol.es/msfade.webp)
 
-Now you to can just zip through documentation, saving precious time you can use to write github readmes like you're trying to sell ginsu steak knives.
+**With mansnip** you'll just zip through documentation, saving precious time you can use to write github readmes like you're trying to sell ginsu steak knives.
 
-Watch how mansnip shows everything with a "-z" option in the 25,888 lines of the zsh man pages (zshall)
+Watch how mansnip shows everything with a "-z" option in the 25,888 lines of the zsh man pages.
 
 ![zshall for all](http://i.9ol.es/mansnip.webp)
 
 But wait, there's more! You'll also get the line number and hierarchical context totally free!
 
-You'll even get to install it easily [through pypi](https://pypi.org/project/mansnip-kristopolous/): `pip3 install mansnip-kristopolous`
+You'll even get to install it easily [through pypi](https://pypi.org/project/mansnip-kristopolous/). 
+
+Here's how to install `pip3 install mansnip-kristopolous`
+
+  ＦＡＤＥ ＴＯ  ＢＬＡＣＫ
+      ＥＮＤ ＳＣＥＮＥ
 
 ## Why hasn't this existed forever?
 
