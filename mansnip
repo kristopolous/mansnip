@@ -31,6 +31,8 @@ buf = []
 buf_start = False
 term_indent = False
 indent_window = []
+stack_guess = []
+stack_indent = []
 
 # There's lots of let's say "creative" ways to format man pages, so
 # we have a plain-text version in case our sophisticated searching
@@ -41,6 +43,21 @@ for line_num, line in enumerate(man_input.split('\n')):
     line = line.strip('\n')
     indent = re.match('^(\s*)', line).end()
     indent_window = indent_window[-2:] + [indent]
+
+    if len(line):
+        stack_indent = stack_indent[-2:] + [indent]
+        if len(stack_indent) > 2:
+            action='!'
+            if indent == 0:
+                stack_guess = [line]
+                action='+'
+            elif indent > stack_indent[-2]:
+                stack_guess.append(man_input_plain[line_num-1])
+                action='+'
+            elif indent < stack_indent[-2]:
+                stack_guess.pop()
+                action='-'
+            #print("{:4} {:8}{}{} {}".format(indent, ' '.join([str(x) for x in stack_indent]), len(stack_guess), action,line))
 
     if not len(buf):
         res = re.match(my_re, line) or re.match(my_re, man_input_plain[line_num])
@@ -82,7 +99,7 @@ for line_num, line in enumerate(man_input.split('\n')):
     elif term_indent:
         if indent > 1 and (indent < term_indent or (not is_def and indent == term_indent)):
             if (len(buf) == 2 and indent == term_indent and line_def) or len(buf) > 2:
-                print("{}\n{}".format(buf_start, '\n'.join(buf)))
+                print("{}({})\n{}".format(buf_start, '/'.join(stack_guess), '\n'.join(buf)))
             buf = []
             term_indent = False
             is_def = False
