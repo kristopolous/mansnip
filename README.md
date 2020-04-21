@@ -4,7 +4,7 @@ Ever try to find things like the "declare" built-in in `bash(1)` only to slodge 
 
 ![the old way](http://i.9ol.es/animate.gif)
 
-Stop wasting time with the 1980s ways of manually stumbling through manuals and say goodbye to these problems once and for all!
+Stop wasting time with the old way of manually stumbling through manuals. Say goodbye to these problems once and for all!
 
 **Finally there's a better way!**
 
@@ -12,10 +12,10 @@ Stop wasting time with the 1980s ways of manually stumbling through manuals and 
 
 Mansnip is a revolutionary way to navigate through manpages, a tool that no terminal should be without!
 
-It will intelligently search through a manpage and return only the relevant results as self-contained browsable sections. 
+It intelligently searches through manpages and outputs the snippets relevant to your query as self-contained browsable sections. 
 Simply use it the way you use man, at the command line, followed by your search term(s).
 
-Watch how I can immediately find `bash(1)'s` declare using mansnip without any extra effort:
+Watch how mansnip can immediately find `bash(1)'s` declare without any extra effort:
 
 ![mansnip is amazing](http://i.9ol.es/msfade.webp)
 
