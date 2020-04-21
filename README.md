@@ -42,6 +42,7 @@ You'll even get to install it easily [through pypi](https://pypi.org/project/man
 Here's how to install `pip3 install mansnip-kristopolous`
 
   ＦＡＤＥ ＴＯ  ＢＬＡＣＫ
+
       ＥＮＤ ＳＣＥＮＥ
 
 ## Why hasn't this existed forever?
