@@ -13,9 +13,11 @@ And when using less as the pager
   * `g(number)` go to that line
 
 
-## Why hasn't this existed forever?
+## Why hasn't something like mansnip existed forever?
 
-Man pages don't really encode a lot of semantic detail. The format is pretty old. There's been a number of attempted replacements, such as [GNU info](https://www.gnu.org/software/texinfo/manual/info-stnd/) and [BSD mdoc](https://mandoc.bsd.lv/) (`man 7 mandoc_mdoc`) but the ones you use on your system are probably just the traditional boring old man files. Ah, inertia.
+It is pretty obvious and I was surprised myself to find nothing.
+
+One of the reasons is man pages don't really encode a lot of semantic detail. The format is pretty old. There's been a number of attempted replacements, such as [GNU info](https://www.gnu.org/software/texinfo/manual/info-stnd/) and [BSD mdoc](https://mandoc.bsd.lv/) (`man 7 mandoc_mdoc`) but the ones you use on your system are probably just the traditional boring old man files. Ah, inertia.
 
 
 Being old, it's primarily concerned with formatting and not any kind of meta-information. And boy can it format! Try using the `groffer(1)` tool and do something like `groffer git-config`. You'll hopefully get a very beautiful PDF popping up on your screen, excellent for printing out and keeping in a 3-ring binder next to your Rolodex and FAX machine. Did you know groff is in a lineage that goes back to the [1964 RUNOFF](https://en.wikipedia.org/wiki/TYPSET_and_RUNOFF) program on MIT's IBM 7094 CTSS? A mere year after Licklider's [Intergalactic Computer Network](https://en.wikipedia.org/wiki/Intergalactic_Computer_Network) memo leading to what *you* probably call "the internet" these days.
