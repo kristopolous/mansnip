@@ -57,3 +57,7 @@ Man pages are ridiculously consistent as far as non-semantically structured text
 
 Thanks. enjoy.
 
+---
+
+**Still** not satisfied? The [source is commented](mansnip) but seriously, that's the last stop.
+
