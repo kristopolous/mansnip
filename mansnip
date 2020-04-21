@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
-import sys
-import re
+import sys, re, os
 
-# The bastard less, has this for its "-h" documentation:
+# The bastard manpage for less, has a number of things like this
 #
 #       -hn or --max-back-scroll=n
 #              Specifies  a  maximum number of lines to scroll backward.  If it
@@ -10,12 +9,21 @@ import re
 #              repainted in a forward direction instead.  (If the terminal does
 #              not have the ability to scroll backward, -h0 is implied.)
 #
-# 'n' is pretty universal AND - usually isn't 2 characters (with a number of notable
-# exceptions such as sendmail) 
+# Because of this the only *real* reliable system is to look at the formatting, 
+# which normally gets stripped so we have to be a bit more clever and be a full
+# wrapper to man as opposed to just parsing <stdout> 
 #
-pack = sys.argv[1:]
-pack += map(lambda x: x + "n", filter(lambda x: x[0] == '-' and len(x) == 2, pack))
-my_re = '^\s*({})(\s.*$|$)'.format('|'.join(pack))
+
+# This allows us to do mansnip <num> <page> or just <page> 
+cutoff = 3 if sys.argv[1].isnumeric() else 2
+
+os.environ["MAN_KEEP_FORMATTING"] = '1'
+cmd = '/usr/bin/man {}'.format(' '.join(sys.argv[1:cutoff]))
+man_input = os.popen(cmd).read().split('\n')
+
+pack = sys.argv[cutoff:]
+# here's our utilization of the formatting (_)
+my_re = '^\s*({})([\s_].*$|$)'.format('|'.join(pack))
 
 is_def = False
 line_def = False
@@ -23,7 +31,7 @@ buf = []
 term_indent = False
 indent_window = []
 
-for line in sys.stdin:
+for line in man_input:
     line = line.strip('\n')
     indent = re.match('^(\s*)', line).end()
     indent_window = indent_window[-2:] + [indent]
