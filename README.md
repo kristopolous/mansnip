@@ -30,9 +30,9 @@ You'll even get to install it easily [through pypi](https://pypi.org/project/man
 
 Here's how do it `pip3 install mansnip-kristopolous`. Act now, servers are standing by.
 
-        ＦＡＤＥ ＴＯ  ＢＬＡＣＫ
+ＦＡＤＥ ＴＯ  ＢＬＡＣＫ
 
-            ＥＮＤ ＳＣＥＮＥ
+ＥＮＤ ＳＣＥＮＥ
 
 ## Why hasn't this existed forever?
 
