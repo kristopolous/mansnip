@@ -14,7 +14,7 @@ import sys, re, os, logging
 # wrapper to man as opposed to just parsing <stdout> 
 #
 
-logging.basicConfig(level=(os.environ.get('LOGLEVEL') or 'info').upper())
+logging.basicConfig(level=(os.environ.get('LOGLEVEL') or 'critical').upper())
 
 # This allows us to do mansnip <num> <page> or just <page> 
 cutoff = 3 if sys.argv[1].isnumeric() else 2
@@ -25,21 +25,22 @@ man_input = os.popen(cmd).read()
 pack = sys.argv[cutoff:]
 
 opts = '|'.join(pack)
-# here's our utilization of the formatting (_)
 #
 # ffmpeg uses [ at times (see hwaccel).
 # the second part is for the long options, sometimes (git config)
 # specified by commas
 #
 my_re = '^\s*(({})([\s_\[].*|, .*|)|-.*({}))$'.format(opts, opts)
-logging.debug(my_re)
+logging.info(my_re)
 
 is_def = False
 line_def = False
-buf = []
-buf_start = False
 stack_start = False
 term_indent = False
+
+buf_start = False
+buf = []
+
 indent_window = []
 stack_guess = []
 stack_indent = []
@@ -51,14 +52,25 @@ last_stack_guess = []
 man_input_plain = re.sub('(.\x08)', '', man_input).split('\n')
 man_input = man_input.split('\n')
 
+# We try to output something nice and readable. If the input is a
+# lot of lines, say zshall (all of zsh), then we set aside a bit of
+# space for the indentation.
 rs = 5 if len(man_input) < 1e4 else 7
 
 for line_num, line in enumerate(man_input):
     line = line.strip('\n')
+
+    # Establish the "indent", this is crucial to how essentially 
+    # everything works.
     indent = re.match('^(\s*)', line).end()
     indent_window = indent_window[-2:] + [indent]
 
     if len(line):
+        logging.debug(line)
+
+        # Our nice stack guessing system essentially keeps a stack
+        # of the indents and then based on the current indent either
+        # pushes or pops on to the stack.
         while len(stack_indent) and indent <= stack_indent[-1]:
             stack_indent.pop()
             stack_guess.pop()
@@ -68,7 +80,11 @@ for line_num, line in enumerate(man_input):
             stack_guess.append(man_input[line_num].strip())
 
     if not len(buf):
+
+        # See if our ansi escaped or plain text version has what we are looking for.
+        # yes that makes it a bit slower, but not as slow as doing it manually.
         res = re.match(my_re, line) or re.match(my_re, man_input_plain[line_num])
+
         if res:
             # This is sheer frantic handwaving for things like this (From bash)
             #
@@ -106,10 +122,19 @@ for line_num, line in enumerate(man_input):
         if indent > 1 and (indent < term_indent or (not is_def and indent == term_indent)):
             spacer = '\n' + ' ' * rs
             if (len(buf) == 2 and indent == term_indent and line_def) or len(buf) > 2:
+                # This is a lot of fancy formatting. We want the
+                # vertical whitespace between the heading and snippet to be consistent.
+                # If we simply removed the empty lines then it would dump the interstitial
+                # (as in, in the middle of our content) empty lines. so we want to get rid
+                # of leading and trailing new lines.
+                #
+                # So we join the array, strip out the trailing new lines, then split it up
+                # again. eh, it's fine.
+                #
+                buf = '\n'.join(buf).strip('\n').split('\n')
 
-                while not len(buf[0]): buf = buf[1:]
-                while not len(buf[-1]): buf = buf[:-1]
-
+                # If we show the same breadcrumb every time it gets kinda laborious and 
+                # repetitive so we cleverly hide the redundancy. 
                 stack_small = stack_start[:]
                 for i in range(0, min(len(last_stack_guess),len(stack_start))):
                     if last_stack_guess[i] == stack_start[i]:
@@ -117,6 +142,9 @@ for line_num, line in enumerate(man_input):
 
                 last_stack_guess = stack_start[:]
 
+                # Now we have to figure out how to print it out to make it look right.
+                # Sometimes it can be inline. The %/fmt double formatting trick comes 
+                # in handle here.
                 if len(stack_small) > 1:
                     stack_print = stack_small[0]
                     if len(stack_small) > 2:
