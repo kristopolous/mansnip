@@ -82,7 +82,7 @@ for line_num, line in enumerate(man_input.split('\n')):
     elif term_indent:
         if indent > 1 and (indent < term_indent or (not is_def and indent == term_indent)):
             if (len(buf) == 2 and indent == term_indent and line_def) or len(buf) > 2:
-                print("@ {}\n{}".format(buf_start, '\n'.join(buf)))
+                print("{}\n{}".format(buf_start, '\n'.join(buf)))
             buf = []
             term_indent = False
             is_def = False

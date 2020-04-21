@@ -30,6 +30,7 @@ This is insane. Why is this basic functionality not there?
 Why can't I just do something like this:
 
     $ mansnip bash declare
+    3812
            declare [-aAfFgilnrtux] [-p] [name[=value] ...]
            typeset [-aAfFgilnrtux] [-p] [name[=value] ...]
                   Declare variables and/or give them attributes.  If no names are given then display the
@@ -45,7 +46,7 @@ Why can't I just do something like this:
            ...
     $
 
-Well, now you can! (ok that was a little obvious)
+Well, now you can, and you even have a line number in there! (ok that was a little obvious)
 
 Pssttt ... it's also on pypi: "pip3 install mansnip-kristopolous"
 
@@ -68,17 +69,23 @@ Anyway, so inside the document source that leads to the pretty man page, there i
 Alright, what do those things mean? You can see that in `man 7 man` or actually, 
 
     $ mansnip 7 man .TP .PD .B .P .I
-       .B  Bold
+    55
+           .B  Bold
 
-       .I  Italics
+    61
+           .I  Italics
 
-       .P       Same as .PP (begin a new paragraph).
+    97
+           .P       Same as .PP (begin a new paragraph).
 
-       .TP i    Begin paragraph with hanging tag.  The tag is given on the next line,  but  its  re‐
-                sults are like those of the .IP command.
+    124
+           .TP i    Begin paragraph with hanging tag.  The tag is given on the next line,  but  its  re‐
+                    sults are like those of the .IP command.
 
-       .PD d    Set  inter-paragraph  vertical  distance to d (if omitted, d=0.4v); does not cause a
-                break.
+    147
+           .PD d    Set  inter-paragraph  vertical  distance to d (if omitted, d=0.4v); does not cause a
+                    break.
+
 
 Hrmm, well that's a problem. It's effectively just a stylesheet. In fact, the format doesn't look fundamentally different than it did in [UNIX v0 in 1970](https://github.com/DoctorWkt/pdp7-unix/blob/master/man/stat.1). A mere 2 years after [Engelbart demoed a prototype hypertext](https://en.wikipedia.org/wiki/The_Mother_of_All_Demos) system, this is well before the [semantic web](https://en.wikipedia.org/wiki/Semantic_Web).
 
