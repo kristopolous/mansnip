@@ -1,16 +1,16 @@
 **Don't you hate** wasting time navigating through manpages with the leading pager's clunky search tools?
 
-Ever try to find things like the "declare" built-in in the `bash(1)` manpage only to incrementally slodge through 34 results using the 'n' key going 'nope, nope, nope'? 
+Ever try to find things like the "declare" built-in in `bash(1)` only to incrementally slodge through 34 results using the 'n' key going 'nope, nope, nope'? 
 
 ![the old way](http://i.9ol.es/animate.gif)
 
 Even the methods of experts struggle to fix these problems.
 
-    $ man bash
-      -N        turn line numbering on
-      &declare  show all the results for "declare", scan them (remember the line number for which one you want)
-      &[enter]  turn off the filtered view
-      g(number) go to that line
+  * `man bash `
+  * `-N       ` turn line numbering on
+  * `&declare ` show all the results for "declare", scan them (remember the line number for which one you want)
+  * `&[enter] ` turn off the filtered view
+  * `g(number)` go to that line
 
 Stop wasting time with the 1980s ways of manually stumbling through manuals and say goodbye to these problems once and for all!
 
