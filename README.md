@@ -50,7 +50,7 @@ Well, now you can! (ok that was a little obvious)
 
 You even get the line number for further investigation.
 
-Pssttt ... it's also on pypi: "pip3 install mansnip-kristopolous"
+Pssttt ... it's [also on pypi](https://pypi.org/project/mansnip-kristopolous/): "pip3 install mansnip-kristopolous"
 
 ## Why hasn't this existed forever?
 
