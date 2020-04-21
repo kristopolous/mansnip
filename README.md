@@ -1,17 +1,8 @@
-### The Problem
+**Don't you hate** wasting your time navigating through manpages with the clunky search tools of less?
 
-Some man pages can be very unwieldy and hard to navigate.  Let's say you were looking for the syntax of the built-in `declare` command inside of `bash(1)`: 
+Try to find the usage of "declare" built-in in the bash man page and you'll need to incrementally slodge through 34 results using the 'n' key, which here stands for 'nope, nope, nope'. 
 
-> I fire up `man bash` and just simply search for the string "declare" with the "/" command! Easy peasy!
-
-Here's the problem:
-
-    $ man bash | grep -c declare
-    34
-
-You'll need to incrementally slodge through 34 of them using the 'n' key, which here stands for 'nope, nope, nope'. 
-
-This is the best optimization I know of:
+Even the methods of experts struggle to fix these basic problems.
 
     $ man bash
       -N        turn line numbering on
@@ -19,13 +10,11 @@ This is the best optimization I know of:
       &[enter]  turn off the filtered view
       g(number) go to that line
 
-There you go. I remember navigating in the 1980s as well. 
-
-This is insane. Why is this basic functionality not there?
+Let's finally leave the 1980s ways of stumbling through manuals behind us. Let's say goodbye to these problems once and for all!
 
 ## Introducting Mansnip! 
 
-Introducing the revolutionary way to navigate through manpages, only with mansnip.
+Mansnip is a revolutionary way to navigate through manpages, a tool that no terminal should be without!
 
 ![zshall for all](http://i.9ol.es/msfade.webp)
 
@@ -39,7 +28,7 @@ But wait, there's more! You'll also get the line number and hierarchical context
 
 You'll even get to install it easily [through pypi](https://pypi.org/project/mansnip-kristopolous/). 
 
-Here's how to install `pip3 install mansnip-kristopolous`
+Here's how do it `pip3 install mansnip-kristopolous`. Act now, servers are standing by.
 
         ＦＡＤＥ ＴＯ  ＢＬＡＣＫ
 
