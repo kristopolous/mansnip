@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="mansnip-kristopolous", 
-    version="0.3",
+    version="0.3.1",
     scripts=["mansnip"],
     author="Chris McKenzie",
     author_email="kristopolous@yahoo.com",
