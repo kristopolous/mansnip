@@ -1,20 +1,32 @@
 ## Pre-history
 
-Here were the two methods before:
+Here were my two methods of searching before I made this tool:
 
- * "search with a leading space" and
+ * Search with a leading space, sometimes "  -t" with two spaces, sometimes with one, etc... Very imprecise
 
+And when using less as the pager
 
   * `man bash `
   * `-N       ` turn line numbering on
-  * `&declare ` show all the results for "declare", scan them (remember the line number for which one you want)
+  * `&declare ` filter and show all the results for "declare", scan them (remember the line number for which one you want)
   * `&[enter] ` turn off the filtered view
   * `g(number)` go to that line
 
+I've been using these older workflows for 20+ years really without questioning it. It always felt a little primitive so I went looking for the more sophisticated way.
 
-## Why hasn't this existed forever?
+I thought "surely there's like an xpath system here where I can do some * queries or display a tree hierarchy... I'm clearly just doing this in a bonehead manner"
 
-Man pages don't really encode a lot of semantic detail. The format is pretty old. There's been a number of attempted replacements, such as [GNU info](https://www.gnu.org/software/texinfo/manual/info-stnd/) and [BSD mdoc](https://mandoc.bsd.lv/) (`man 7 mandoc_mdoc`) but the ones you use on your system are probably just the traditional boring old man files. Ah, inertia.
+I looked for these and they didn't exist. The regex and cycle method was the best way there was.
+
+Shocking. 
+
+So I built something better.
+
+## Why hasn't something like mansnip existed forever?
+
+It is pretty obvious and I was surprised myself to find nothing.
+
+One of the reasons is man pages don't really encode a lot of semantic detail. The format is pretty old. There's been a number of attempted replacements, such as [GNU info](https://www.gnu.org/software/texinfo/manual/info-stnd/) and [BSD mdoc](https://mandoc.bsd.lv/) (`man 7 mandoc_mdoc`) but the ones you use on your system are probably just the traditional boring old man files. Ah, inertia.
 
 
 Being old, it's primarily concerned with formatting and not any kind of meta-information. And boy can it format! Try using the `groffer(1)` tool and do something like `groffer git-config`. You'll hopefully get a very beautiful PDF popping up on your screen, excellent for printing out and keeping in a 3-ring binder next to your Rolodex and FAX machine. Did you know groff is in a lineage that goes back to the [1964 RUNOFF](https://en.wikipedia.org/wiki/TYPSET_and_RUNOFF) program on MIT's IBM 7094 CTSS? A mere year after Licklider's [Intergalactic Computer Network](https://en.wikipedia.org/wiki/Intergalactic_Computer_Network) memo leading to what *you* probably call "the internet" these days.
