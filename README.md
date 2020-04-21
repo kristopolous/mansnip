@@ -21,7 +21,7 @@ Watch how I can immediately find `bash(1)'s` declare using mansnip without any e
 
 Mansnip works on any manpage.
 
-**With mansnip** you'll just zip through documentation, saving precious time you can use to write github readmes like you're trying to sell ginsu steak knives.
+**With mansnip** you'll just zip through documentation, saving precious time so you can write github readmes like you're trying to sell ginsu steak knives.
 
 Watch how mansnip shows everything with a "-z" option in the 25,888 lines of the [zshall manpage](http://gsp.com/cgi-bin/man.cgi?section=1&topic=zshall) on a single screen, all at once, in an easy-to-read manner.
 
