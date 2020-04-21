@@ -46,10 +46,15 @@ stack_guess = []
 stack_indent = []
 last_stack_guess = []
 
+# Words we can just leave out of the breadcrumb.
+filler_terms = ['DESCRIPTION','OPTIONS']
+
+clean_ansi = lambda w: re.sub('(.\x08)', '', w)
+
 # There's lots of let's say "creative" ways to format man pages, so
 # we have a plain-text version in case our sophisticated searching
 # method fails.
-man_input_plain = re.sub('(.\x08)', '', man_input).split('\n')
+man_input_plain = clean_ansi(man_input).split('\n')
 man_input = man_input.split('\n')
 
 # We try to output something nice and readable. If the input is a
@@ -141,6 +146,10 @@ for line_num, line in enumerate(man_input):
                         stack_small = stack_small[1:]
 
                 last_stack_guess = stack_start[:]
+
+                if len(stack_small) > 1:
+                    if clean_ansi(stack_small[0]) in filler_terms:
+                        stack_small = stack_small[1:]
 
                 # Now we have to figure out how to print it out to make it look right.
                 # Sometimes it can be inline. The %/fmt double formatting trick comes 
