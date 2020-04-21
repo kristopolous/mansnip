@@ -30,7 +30,7 @@ opts = '|'.join(pack)
 # the second part is for the long options, sometimes (git config)
 # specified by commas
 #
-my_re = '^\s*(({})([\s_\[].*|, .*|)|-.*({}))$'.format(opts, opts)
+my_re = '^\s*(({})([\s_\[].*|, .*|)|-.*\s({}))$'.format(opts, opts)
 logging.info(my_re)
 
 is_def = False
