@@ -29,6 +29,7 @@ is_def = False
 line_def = False
 buf = []
 buf_start = False
+stack_start = False
 term_indent = False
 indent_window = []
 stack_guess = []
@@ -38,26 +39,24 @@ stack_indent = []
 # we have a plain-text version in case our sophisticated searching
 # method fails.
 man_input_plain = re.sub('(.\x08)', '', man_input).split('\n')
+man_input = man_input.split('\n')
 
-for line_num, line in enumerate(man_input.split('\n')):
+for line_num, line in enumerate(man_input):
     line = line.strip('\n')
     indent = re.match('^(\s*)', line).end()
     indent_window = indent_window[-2:] + [indent]
 
     if len(line):
-        stack_indent = stack_indent[-2:] + [indent]
-        if len(stack_indent) > 2:
-            action='!'
-            if indent == 0:
-                stack_guess = [line]
-                action='+'
-            elif indent > stack_indent[-2]:
-                stack_guess.append(man_input_plain[line_num-1])
-                action='+'
-            elif indent < stack_indent[-2]:
-                stack_guess.pop()
-                action='-'
-            #print("{:4} {:8}{}{} {}".format(indent, ' '.join([str(x) for x in stack_indent]), len(stack_guess), action,line))
+        #stack_indent = stack_indent[-2:] + [indent]
+        while len(stack_indent) and indent <= stack_indent[-1]:
+            stack_indent.pop()
+            stack_guess.pop()
+
+        if not len(stack_indent) or indent > stack_indent[-1]:
+            stack_indent.append(indent)
+            stack_guess.append(man_input[line_num].strip())
+
+        #print("{:4}| {:12}\n{}".format(indent, ' '.join([str(x) for x in stack_indent]), '\n'.join(stack_guess)))
 
     if not len(buf):
         res = re.match(my_re, line) or re.match(my_re, man_input_plain[line_num])
@@ -94,12 +93,23 @@ for line_num, line in enumerate(man_input.split('\n')):
 
             buf.append(line)
             buf_start = line_num
+            stack_start = stack_guess[:]
             term_indent = indent
 
     elif term_indent:
         if indent > 1 and (indent < term_indent or (not is_def and indent == term_indent)):
+            spacer = '\n' + ' ' * 6
             if (len(buf) == 2 and indent == term_indent and line_def) or len(buf) > 2:
-                print("{}({})\n{}".format(buf_start, '/'.join(stack_guess), '\n'.join(buf)))
+
+                while not len(buf[0]): buf = buf[1:]
+                while not len(buf[-1]): buf = buf[:-1]
+
+                stack_print = stack_start[0]
+                if len(stack_start) > 2:
+                    stack_print += spacer + spacer.join(stack_start[1:-1])
+
+                print("{:<6}{}\n{}\n".format(buf_start, stack_print, '\n'.join(buf)))
+
             buf = []
             term_indent = False
             is_def = False
