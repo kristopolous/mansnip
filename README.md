@@ -1,6 +1,6 @@
 **Don't you hate** wasting your time navigating through manpages with the clunky search tools of less?
 
-Ever try to find the usage of things like the "declare" built-in in the bash(1) man page only to incrementally slodge through 34 results using the 'n' key going 'nope, nope, nope'. 
+Ever try to find the usage of things like the "declare" built-in in the `bash(1)` man page only to incrementally slodge through 34 results using the 'n' key going 'nope, nope, nope'?
 
 Even the methods of experts struggle to fix these problems.
 
