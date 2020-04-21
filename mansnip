@@ -16,66 +16,73 @@ import sys, re, os
 
 # This allows us to do mansnip <num> <page> or just <page> 
 cutoff = 3 if sys.argv[1].isnumeric() else 2
-
-os.environ["MAN_KEEP_FORMATTING"] = '1'
+os.environ['MAN_KEEP_FORMATTING'] = '1'
 cmd = '/usr/bin/man {}'.format(' '.join(sys.argv[1:cutoff]))
-man_input = os.popen(cmd).read().split('\n')
+man_input = os.popen(cmd).read()
 
 pack = sys.argv[cutoff:]
+
 # here's our utilization of the formatting (_)
 my_re = '^\s*({})([\s_].*$|$)'.format('|'.join(pack))
 
 is_def = False
 line_def = False
 buf = []
+buf_start = False
 term_indent = False
 indent_window = []
 
-for line in man_input:
+# There's lots of let's say "creative" ways to format man pages, so
+# we have a plain-text version in case our sophisticated searching
+# method fails.
+man_input_plain = re.sub('(.\x08)', '', man_input).split('\n')
+
+for line_num, line in enumerate(man_input.split('\n')):
     line = line.strip('\n')
     indent = re.match('^(\s*)', line).end()
     indent_window = indent_window[-2:] + [indent]
 
-    res = re.match(my_re, line)
-    if res:
-        # This is sheer frantic handwaving for things like this (From bash)
-        #
-        #  declare [-aAfFgilnrtux] [-p] [name[=value] ...]
-        #  typeset [-aAfFgilnrtux] [-p] [name[=value] ...]
-        #
-        # Surely, if I search for "declare" this is what I want, but it
-        # it breaks our classic rules so instead we try a number of 
-        # imperfet guesses.
-        #
-        # The first one is back-searching the indent margins. Generally
-        # there's a space before we see this and then some end of a 
-        # previous block that was indented further. soooo yeah we
-        # look for that.
-        #
-        if indent_window[0] > indent and indent_window[1] == 0:
-            is_def = True
+    if not len(buf):
+        res = re.match(my_re, line) or re.match(my_re, man_input_plain[line_num])
+        if res:
+            # This is sheer frantic handwaving for things like this (From bash)
+            #
+            #  declare [-aAfFgilnrtux] [-p] [name[=value] ...]
+            #  typeset [-aAfFgilnrtux] [-p] [name[=value] ...]
+            #
+            # Surely, if I search for "declare" this is what I want, but it
+            # it breaks our classic rules so instead we try a number of 
+            # imperfet guesses.
+            #
+            # The first one is back-searching the indent margins. Generally
+            # there's a space before we see this and then some end of a 
+            # previous block that was indented further. soooo yeah we
+            # look for that.
+            #
+            if indent_window[0] > indent and indent_window[1] == 0:
+                is_def = True
 
-        # From man 7 man we get things like this:
-        #  .I  Italics
-        #
-        #  .IB Italics alternating with bold
-        #
-        #  .IR Italics alternating with Roman
-        #
-        elif indent_window[0] == indent and indent_window[1] == 0:
-            line_def = True
+            # From man 7 man we get things like this:
+            #  .I  Italics
+            #
+            #  .IB Italics alternating with bold
+            #
+            #  .IR Italics alternating with Roman
+            #
+            elif indent_window[0] == indent and indent_window[1] == 0:
+                line_def = True
 
-        #print(indent_window, is_def, line_def)
-        #print("<{}>".format(res[1]))
+            #print(indent_window, is_def, line_def)
+            #print("<{}>".format(res[1]))
 
-        buf.append(line)
-        term_indent = indent
+            buf.append(line)
+            buf_start = line_num
+            term_indent = indent
 
     elif term_indent:
-        #print(indent, term_indent)
         if indent > 1 and (indent < term_indent or (not is_def and indent == term_indent)):
             if (len(buf) == 2 and indent == term_indent and line_def) or len(buf) > 2:
-                print('\n'.join(buf))
+                print("@{}\n{}".format(buf_start, '\n'.join(buf)))
             buf = []
             term_indent = False
             is_def = False
