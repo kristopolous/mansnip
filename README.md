@@ -21,7 +21,7 @@ Stop wasting time with the 1980s ways of manually stumbling through manuals and 
 Mansnip is a revolutionary way to navigate through manpages, a tool that no terminal should be without!
 
 It will intelligently search through a manpage and return the results we all are looking for. 
-Simply use it the way you use man, at the command line, followed by the search term(s) you are looking for.
+Simply use it the way you use man, at the command line, followed by the your search term(s).
 
 Watch how I can immediately find `bash(1)'s` declare using mansnip without any extra effort:
 
