@@ -25,26 +25,11 @@ This is insane. Why is this basic functionality not there?
 
 ## Introducting Mansnip! 
 
-Why can't I just do something like this:
+Introducing the revolutionary way to navigate through manpages, only with mansnip.
 
-    $ mansnip bash declare
-    3812 SHELL BUILTIN COMMANDS
-           declare [-aAfFgilnrtux] [-p] [name[=value] ...]
-           typeset [-aAfFgilnrtux] [-p] [name[=value] ...]
-                  Declare variables and/or give them attributes.  If no names are given then display the
-                  values  of  variables.   The  -p option will display the attributes and values of each
-                  name.  When -p is used with name arguments, additional options, other than -f and  -F,
-                  are  ignored.   When  -p  is  supplied without name arguments, it will display the at‐
-                  tributes and values of all variables having the attributes specified by the additional
-                  options.   If  no  other  options  are  supplied with -p, declare will display the at‐
-                  tributes and values of all shell variables.  The -f option will restrict  the  display
-                  to  shell functions.  The -F option inhibits the display of function definitions; only
-                  the function name and attributes are printed.  If the extdebug shell option is enabled
-                  using  shopt, the source file name and line number where each name is defined are dis‐
-           ...
-    $
+![zshall for all](http://i.9ol.es/msfade.webp)
 
-Well, now you can! 
+Now you to can just zip through documentation, saving precious time you can use to write github readmes like you're trying to sell ginsu steak knives.
 
 Watch how mansnip shows everything with a "-z" option in the 25,888 lines of the zsh man pages (zshall)
 
