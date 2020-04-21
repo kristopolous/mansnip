@@ -42,6 +42,8 @@ last_stack_guess = []
 man_input_plain = re.sub('(.\x08)', '', man_input).split('\n')
 man_input = man_input.split('\n')
 
+rs = 5 if len(man_input) < 1e4 else 7
+
 for line_num, line in enumerate(man_input):
     line = line.strip('\n')
     indent = re.match('^(\s*)', line).end()
@@ -99,7 +101,7 @@ for line_num, line in enumerate(man_input):
 
     elif term_indent:
         if indent > 1 and (indent < term_indent or (not is_def and indent == term_indent)):
-            spacer = '\n' + ' ' * 6
+            spacer = '\n' + ' ' * rs
             if (len(buf) == 2 and indent == term_indent and line_def) or len(buf) > 2:
 
                 while not len(buf[0]): buf = buf[1:]
@@ -119,9 +121,9 @@ for line_num, line in enumerate(man_input):
                     stack_print += "\n"
                 else:
                     stack_print = ''
-                    buf[0] = re.sub('^\s{6}', '', buf[0])
+                    buf[0] = re.sub('^\s{%d}' % rs, '', buf[0])
 
-                print("{:<6}{}{}\n".format(buf_start, stack_print, '\n'.join(buf)))
+                print(("{:<%d}{}{}\n" % rs).format(buf_start, stack_print, '\n'.join(buf)))
 
             buf = []
             term_indent = False
