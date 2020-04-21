@@ -29,7 +29,7 @@ This is insane. Why is this basic functionality not there?
 
 Why can't I just do something like this:
 
-    $ man bash | mansnip declare
+    $ mansnip bash declare
            declare [-aAfFgilnrtux] [-p] [name[=value] ...]
            typeset [-aAfFgilnrtux] [-p] [name[=value] ...]
                   Declare variables and/or give them attributes.  If no names are given then display the
@@ -67,7 +67,7 @@ Anyway, so inside the document source that leads to the pretty man page, there i
 
 Alright, what do those things mean? You can see that in `man 7 man` or actually, 
 
-    $  man 7 man | mansnip .TP .PD .B .P .I
+    $ mansnip 7 man .TP .PD .B .P .I
        .B  Bold
 
        .I  Italics
