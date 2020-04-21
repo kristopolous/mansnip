@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import sys, re, os, logging
 
-# The bastard manpage for less, has a number of things like this
+# less and others have a number of things like this 
 #
 #       -hn or --max-back-scroll=n
 #              Specifies  a  maximum number of lines to scroll backward.  If it
