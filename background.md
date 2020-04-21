@@ -1,13 +1,14 @@
 ## Pre-history
 
-Here were the two methods before:
+Here were the two methods of searching before I made this tool:
 
- * "search with a leading space" and
+ * "search with a leading space" 
 
+And when using less as the pager
 
   * `man bash `
   * `-N       ` turn line numbering on
-  * `&declare ` show all the results for "declare", scan them (remember the line number for which one you want)
+  * `&declare ` filter and show all the results for "declare", scan them (remember the line number for which one you want)
   * `&[enter] ` turn off the filtered view
   * `g(number)` go to that line
 
