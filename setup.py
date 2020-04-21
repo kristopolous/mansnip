@@ -7,6 +7,7 @@ with open("README.md", "r") as fh:
 setuptools.setup(
     name="mansnip-kristopolous", 
     version="0.1",
+    scripts=["mansnip"],
     author="Chris McKenzie",
     author_email="kristopolous@yahoo.com",
     description="Finding just the snippets in man page you care about",
