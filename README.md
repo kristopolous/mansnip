@@ -1,6 +1,6 @@
 **Don't you hate** wasting time navigating through manpages with the leading pager's clunky search tools?
 
-Ever try to find things like the "declare" built-in in `bash(1)` only to incrementally slodge through 34 results using the 'n' key going 'nope, nope, nope'? 
+Ever try to find things like the "declare" built-in in `bash(1)` only to incrementally slodge through the results using the 'n' key going 'nope, nope, nope'? 
 
 ![the old way](http://i.9ol.es/animate.gif)
 
