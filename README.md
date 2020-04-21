@@ -36,7 +36,7 @@ You'll also get to install it easily [through pypi](https://pypi.org/project/man
 
 Here's how do it 
 
-`$ pip3 install mansnip-kristopolous`. 
+`$ pip3 install mansnip-kristopolous` 
 
 Act now, servers are standing by.
 
