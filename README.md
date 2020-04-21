@@ -1,4 +1,4 @@
-**Don't you hate** wasting your time navigating through manpages with the clunky search tools of less?
+**Don't you hate** wasting time navigating through manpages with the clunky search tools of less?
 
 Ever try to find things like the "declare" built-in in the `bash(1)` man page only to incrementally slodge through 34 results using the 'n' key going 'nope, nope, nope'?
 
@@ -12,7 +12,7 @@ Even the methods of experts struggle to fix these problems.
       &[enter]  turn off the filtered view
       g(number) go to that line
 
-Now you'll leave the 1980s ways of stumbling through manuals behind you and say goodbye to these problems once and for all!
+Soon you'll leave the 1980s ways of stumbling through manuals behind you and say goodbye to these problems once and for all!
 
 ## Introducting Mansnip! 
 
