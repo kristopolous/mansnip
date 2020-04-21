@@ -40,4 +40,6 @@ Act now, servers are standing by.
 
 ＥＮＤ ＳＣＥＮＥ
 
-[background](background.md)
+---
+
+Want more? Here's some [background](background.md) 
