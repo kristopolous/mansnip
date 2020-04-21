@@ -12,7 +12,7 @@ Even the methods of experts struggle to fix these problems.
       &[enter]  turn off the filtered view
       g(number) go to that line
 
-Stop wasting time with the 1980s ways of stumbling through manual and say goodbye to these problems once and for all!
+Stop wasting time with the 1980s ways of manually stumbling through manuals and say goodbye to these problems once and for all!
 
 **Now there's finally a solution!**
 
