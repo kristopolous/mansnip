@@ -12,6 +12,13 @@ And when using less as the pager
   * `&[enter] ` turn off the filtered view
   * `g(number)` go to that line
 
+I've been using these older workflows for 20+ years really without questioning it. It always felt a little primitive so I went looking for the more sophisticated way.
+
+I thought "surely there's like an xpath system here where I can do some * queries or display a tree hierarchy... I'm clearly just doing this in a bonehead manner"
+
+I looked and there wasn't.
+
+Shocking. So I built one.
 
 ## Why hasn't something like mansnip existed forever?
 
