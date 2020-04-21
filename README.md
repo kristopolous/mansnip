@@ -1,6 +1,6 @@
-**Don't you hate** wasting time navigating through manpages with the clunky search tools of less?
+**Don't you hate** wasting time navigating through manpages with those leading pager's clunky search tools?
 
-Ever try to find things like the "declare" built-in in the `bash(1)` man page only to incrementally slodge through 34 results using the 'n' key going 'nope, nope, nope'?
+Ever try to find things like the "declare" built-in in the `bash(1)` man page only to incrementally slodge through 34 results using the 'n' key going 'nope, nope, nope'? 
 
 ![the old way](http://i.9ol.es/animate.gif)
 
@@ -11,6 +11,8 @@ Even the methods of experts struggle to fix these problems.
       &declare  show all the results for "declare", scan them (remember the line number for which one you want)
       &[enter]  turn off the filtered view
       g(number) go to that line
+
+**Now there's finally a solution!**
 
 Soon you'll leave the 1980s ways of stumbling through manuals behind you and say goodbye to these problems once and for all!
 
