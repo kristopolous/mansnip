@@ -1,8 +1,6 @@
 ### The Problem
 
-Man pages are an impressive feat! 
-
-Some however, are very unwieldy and hard to navigate.
+Some man pages can be very unwieldy and hard to navigate.
 
 Let's say you were looking for the syntax of the built-in `declare` command inside of `bash(1)`: 
 
@@ -88,7 +86,7 @@ Yes, the only two semantic concessions given in the modern man format is `.SH` w
 
 "Well let's fix this!" you say! 
 
-A third time? lol, ok, have fun. We're probably stuck with these for the rest of our lives.
+A third time? lol, ok, have fun. Might work. For now we're stuck with these.
 
 "So there's no surefire easy way to find these snippets then, you can only guess?"
 
