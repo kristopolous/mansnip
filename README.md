@@ -12,7 +12,7 @@ Even the methods of experts struggle to fix these problems.
       &[enter]  turn off the filtered view
       g(number) go to that line
 
-Let's finally leave the 1980s ways of stumbling through manuals behind us and say goodbye to these problems once and for all!
+Now you'll leave the 1980s ways of stumbling through manuals behind you and say goodbye to these problems once and for all!
 
 ## Introducting Mansnip! 
 
