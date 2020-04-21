@@ -46,7 +46,9 @@ Why can't I just do something like this:
            ...
     $
 
-Well, now you can, and you even have a line number in there! (ok that was a little obvious)
+Well, now you can! (ok that was a little obvious)
+
+You even get the line number for further investigation.
 
 Pssttt ... it's also on pypi: "pip3 install mansnip-kristopolous"
 
