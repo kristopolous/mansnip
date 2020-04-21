@@ -1,6 +1,6 @@
 ## Pre-history
 
-Here were the two methods of searching before I made this tool:
+Here were my two methods of searching before I made this tool:
 
  * Search with a leading space, sometimes "  -t" with two spaces, sometimes with one, etc... Very imprecise
 
