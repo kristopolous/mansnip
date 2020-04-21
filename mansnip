@@ -20,17 +20,19 @@ logging.basicConfig(level=(os.environ.get('LOGLEVEL') or 'critical').upper())
 cutoff = 3 if sys.argv[1].isnumeric() else 2
 os.environ['MAN_KEEP_FORMATTING'] = '1'
 cmd = '/usr/bin/man {}'.format(' '.join(sys.argv[1:cutoff]))
+logging.info(cmd)
 man_input = os.popen(cmd).read()
 
 pack = sys.argv[cutoff:]
 
 opts = '|'.join(pack)
 #
-# ffmpeg uses [ at times (see hwaccel).
-# the second part is for the long options, sometimes (git config)
-# specified by commas
+# lsof uses +|- syntax, that's what the very fun (\+\||) is for
+# Then comes the term expansion and a few trailing characters.
+# ffmpeg uses [ at times (see hwaccel), many things use ',' to show a second option.
+# the second part is for the long options, sometimes (git config) specified by commas
 #
-my_re = '^\s*(({})([\s_\[].*|, .*|)|-.*\s({}))$'.format(opts, opts)
+my_re = '^\s*((\+\||)({})([\s_\[].*|, .*|)|-.*\s({}))$'.format(opts, opts)
 logging.info(my_re)
 
 is_def = False
