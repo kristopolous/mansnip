@@ -17,9 +17,30 @@ import sys, re, os, logging
 logging.basicConfig(level=(os.environ.get('LOGLEVEL') or 'critical').upper())
 
 # This allows us to do mansnip <num> <page> or just <page> 
-cutoff = 3 if sys.argv[1].isnumeric() else 2
-os.environ['MAN_KEEP_FORMATTING'] = '1'
-cmd = '/usr/bin/man {}'.format(' '.join(sys.argv[1:cutoff]))
+try:
+    if len(sys.argv) < 3:
+        raise Exception
+
+    cutoff = 3 if sys.argv[1].isnumeric() else 2
+    os.environ['MAN_KEEP_FORMATTING'] = '1'
+    cmd = '/usr/bin/man {}'.format(' '.join(sys.argv[1:cutoff]))
+except:
+    from textwrap import dedent
+    print(dedent("""\
+    ✂ mansnip usage ✂
+      Mansnip works much like man does only it takes query strings after the
+      page you're looking to read. The syntax is generally:
+
+    $ mansnip [ section ] page [ query0 query1 ... queryN ]
+
+      For instance, if you want to find out what say, the xzv and f options
+      in tar do you can do 
+
+    $ mansnip tar -x -z -v -f
+
+      Have fun."""))
+    sys.exit(-1)
+
 logging.info(cmd)
 man_input = os.popen(cmd).read()
 
