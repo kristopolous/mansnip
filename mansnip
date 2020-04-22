@@ -16,18 +16,22 @@ import sys, re, os, logging
 
 logging.basicConfig(level=(os.environ.get('LOGLEVEL') or 'critical').upper())
 
-# This allows us to do mansnip <num> <page> or just <page> 
 try:
     if len(sys.argv) < 3:
-        raise Exception
+        raise Exception("Not enough params")
 
+    # This allows us to do mansnip <num> <page> or just <page> 
     cutoff = 3 if sys.argv[1].isnumeric() else 2
     os.environ['MAN_KEEP_FORMATTING'] = '1'
-    cmd = '/usr/bin/man {}'.format(' '.join(sys.argv[1:cutoff]))
+
+    # Some people use cygwin
+    # You may gladly throw me in python prison for this line...
+    cmd = ' '.join(['/usr/bin/man' if os.path.exists('/usr/bin') else 'man'] + sys.argv[1:cutoff])
     logging.info(cmd)
+
     man_input = os.popen(cmd).read()
 
-except:
+except Exception as ex:
     from textwrap import dedent
     print(dedent("""\
     ✂ mansnip usage ✂
@@ -42,6 +46,7 @@ except:
     $ mansnip tar -x -z -v -f
 
       Have fun."""))
+    logging.info(ex)
     sys.exit(-1)
 
 pack = sys.argv[cutoff:]
