@@ -24,6 +24,9 @@ try:
     cutoff = 3 if sys.argv[1].isnumeric() else 2
     os.environ['MAN_KEEP_FORMATTING'] = '1'
     cmd = '/usr/bin/man {}'.format(' '.join(sys.argv[1:cutoff]))
+    logging.info(cmd)
+    man_input = os.popen(cmd).read()
+
 except:
     from textwrap import dedent
     print(dedent("""\
@@ -40,9 +43,6 @@ except:
 
       Have fun."""))
     sys.exit(-1)
-
-logging.info(cmd)
-man_input = os.popen(cmd).read()
 
 pack = sys.argv[cutoff:]
 
