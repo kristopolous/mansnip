@@ -39,6 +39,8 @@ Here's how do it
 
 Act now, servers are standing by.
 
+![mansnip](http://i.9ol.es/man1.jpg)
+
 ＦＡＤＥ ＴＯ  ＢＬＡＣＫ
 
 ＥＮＤ ＳＣＥＮＥ
