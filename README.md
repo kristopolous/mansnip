@@ -2,7 +2,7 @@
   
 [![Video](http://i.9ol.es/vid.jpg)](http://www.youtube.com/watch?v=3GT1J-ejM3Q)
 
-> "As seen on YouTube!" (1min 45sec)
+> "As seen on YouTube!" (click image, it's only 1min 45sec)
 </p>
 
 ----
