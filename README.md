@@ -1,3 +1,10 @@
+<p align="center">
+  
+[![Video](http://img.youtube.com/vi/3GT1J-ejM3Q/0.jpg)](http://www.youtube.com/watch?v=3GT1J-ejM3Q)
+
+> "As seen on YouTube!"
+</p>
+
 **Don't you hate** wasting time navigating through manpages with the leading pager's clunky search tools?
 
 Ever try to find things like the "declare" built-in in `bash(1)` only to slodge through the results using the 'n' key going 'nope, nope, nope'? 
