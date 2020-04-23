@@ -1,9 +1,11 @@
 <p align="center">
   
-[![Video](http://img.youtube.com/vi/3GT1J-ejM3Q/0.jpg)](http://www.youtube.com/watch?v=3GT1J-ejM3Q)
+[![Video](http://i.9ol.es/vid.jpg)](http://www.youtube.com/watch?v=3GT1J-ejM3Q)
 
-> "As seen on YouTube!"
+> "As seen on YouTube!" (1min 45sec)
 </p>
+
+----
 
 **Don't you hate** wasting time navigating through manpages with the leading pager's clunky search tools?
 
