@@ -37,6 +37,7 @@ if len(sys.argv) > 1:
         print("Creating {}".format(fname))
         command = ' '.join(args)
         res = os.popen("../mansnip " + command).read()
+        print(res) 
         f.write(res)
         sys.exit(0)
 
@@ -61,9 +62,9 @@ with open('testlist.txt', 'r') as f:
         actual = os.popen(cmd).read()
 
         if actual == expected:
-            print(cmd + " passed")
+            print(test + " passed")
         else:
-            print(cmd + " failed")
+            print(test + " failed")
             store_results(path, expected, actual)
 
 
