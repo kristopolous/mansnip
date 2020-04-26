@@ -67,9 +67,11 @@ my_re = ''.join([
         '|',
             # this is for the long options, sometimes (git config) specified by commas
             '-.*\s({})',
+
+            # and kinda our same capture from above
             '([\s_\[=].*|)',
      ')$'
-    ]).format(opts, opts)
+   ]).format(opts, opts)
 
 logging.info(my_re)
 
@@ -106,9 +108,13 @@ man_input = man_input.split('\n')
 #
 rs = 5 if len(man_input) < 1e4 else 7
 
-for line_num, line in enumerate(man_input):
-    line = line.strip('\n')
+line_num = -1
+while line_num + 1 < len(man_input):
+    line_num += 1
 
+    line = man_input[line_num].strip('\n')
+
+    logging.info(line_num)
     #
     # Establish the "indent", this is crucial to how essentially 
     # everything works.
@@ -254,6 +260,9 @@ for line_num, line in enumerate(man_input):
 
                 print(("{:<%d}{}{}\n" % rs).format(buf_start, stack_print, '\n'.join(buf)))
 
+            # if this was the line we decided to reset everything on then we should actually process
+            # it again because it could ALSO be the first line of a new match.
+            line_num -= 1
             buf = []
             term_indent = False
             is_def = False
