@@ -52,14 +52,24 @@ except Exception as ex:
 pack = sys.argv[cutoff:]
 
 opts = '|'.join(pack)
-#
-# lsof uses +|- syntax, that's what the very fun (\+\||) is for
-# Then comes the term expansion and a few trailing characters.
-# ffmpeg uses [ at times (see hwaccel), many things use ',' to show a second option.
-# mmcli uses = a lot of the times
-# the second part is for the long options, sometimes (git config) specified by commas
-#
-my_re = '^\s*((\+\||)({})([\s_\[=].*|, .*|)|-.*\s({}))$'.format(opts, opts)
+my_re = ''.join([
+    '^\s*',
+    '(',
+             # lsof uses +|- syntax,
+            '(\+\||)',
+
+            # the term itself
+            '({})',
+
+            # ffmpeg uses [ at times (see hwaccel), many things use ',' to show a second option.
+            # mmcli uses = a lot of the times
+            '([\s_\[=].*|, .*|)',
+        '|',
+            # this is for the long options, sometimes (git config) specified by commas
+            '-.*\s({})'
+     ')$'
+    ]).format(opts, opts)
+
 logging.info(my_re)
 
 is_def = False
