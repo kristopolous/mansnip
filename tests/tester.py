@@ -62,9 +62,9 @@ with open('testlist.txt', 'r') as f:
         actual = os.popen(cmd).read()
 
         if actual == expected:
-            print(test + " passed")
+            print("PASSED " + test)
         else:
-            print(test + " failed")
+            print("!! FAILED " + test)
             store_results(path, expected, actual)
 
 
