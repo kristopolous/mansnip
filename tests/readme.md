@@ -3,9 +3,19 @@ The testing system here is as follows:
 test file is:
   \w+.test
 
-test format is
-  [ arguments on the first line ]
-  [ ... expected output ... ]
+To make new tests run this:
 
-In order to make the line numbers match we are injecting
-a MANWIDTH=250 into all the executions
+  ./tester.py (mansnip args)
+
+Then the args get appened to the testlist.txt
+
+To actually run the tests execute the following:
+
+  ./tester.py (no args)
+
+And it will run through everything inside of testlist.txt
+
+Notes:
+
+  You can comment out a test with # and you can have the test system stop
+  by inserting a "stop" after a test on its own line.
