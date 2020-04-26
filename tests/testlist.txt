@@ -1,7 +1,8 @@
-bash declare
-zshall -z
-7 man .TP .PD .B .P .I
-lsof -E
-ffmpeg -c
-ls --ignore
-ls --inode --ignore
+["bash", "declare"]
+["zshall", "-z"]
+["7", "man", ".TP", ".PD", ".B", ".P", ".I"]
+["lsof", "-E"]
+["ffmpeg", "-c"]
+["ls", "--ignore"]
+["ls", "--inode", "--ignore"]
+["bash", "-z string"]

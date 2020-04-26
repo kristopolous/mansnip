@@ -3,6 +3,7 @@ import os
 import sys
 import re
 import tempfile
+import json
 
 os.environ['MANWIDTH'] = '250'
 tempdir = None
@@ -31,7 +32,7 @@ if len(sys.argv) > 1:
         sys.exit(-1)
 
     with open('testlist.txt', 'a') as f:
-        f.write("{}\n".format(' '.join(args)))
+        f.write(json.dumps(args) + "\n")
 
     with open(fname, 'w') as f:
         print("Creating {}".format(fname))
@@ -44,7 +45,9 @@ if len(sys.argv) > 1:
 with open('testlist.txt', 'r') as f:
     testList = f.read().splitlines()
 
-    for test in testList:
+    for testraw in testList:
+        test = ' '.join(json.loads(testraw))
+
         if test == 'stop':
             print("asked to stop")
             sys.exit(0)
