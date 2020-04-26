@@ -114,7 +114,6 @@ while line_num + 1 < len(man_input):
 
     line = man_input[line_num].strip('\n')
 
-    logging.info(line_num)
     #
     # Establish the "indent", this is crucial to how essentially 
     # everything works.
@@ -217,7 +216,7 @@ while line_num + 1 < len(man_input):
            )):
             spacer = '\n' + ' ' * rs
             logging.info(len(buf))
-            if (len(buf) == 2 and indent == term_indent and line_def) or len(buf) > 2:
+            if (len(buf) == 2 and indent == term_indent and line_def) or len(buf) > 1:
                 #
                 # This is a lot of fancy formatting. We want the
                 # vertical whitespace between the heading and snippet to be consistent.
