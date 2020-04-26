@@ -1,0 +1,17 @@
+174    ++||--EE     ++EE specifies that Linux pipe, Linux UNIX socket and Linux pseudoterminal files should be displayed with endpoint information and the files of the endpoints should also be displayed.  Note: UNIX socket file endpoint  information
+                is only available when the compile flags line of --vv output contains HASUXSOCKEPT, and psudoterminal endpoint information is only available when the compile flags line contains HASPTYEPT.
+
+                Pipe endpoint information is displayed in the NAME column in the form ``_P_I_D_,_c_m_d_,_F_D_m_o_d_e'', where _P_I_D is the endpoint process ID; _c_m_d is the endpoint process command; _F_D is the endpoint file's descriptor; and _m_o_d_e is the endpoint
+                file's access mode.
+
+                Pseudoterminal endpoint information is displayed in the NAME column as ``->/dev/pts_m_i_n _P_I_D_,_c_m_d_,_F_D_m_o_d_e'' or ``_P_I_D_,_c_m_d_,_F_D_m_o_d_e''.  The first form is for a master device; the second, for a slave device.  _m_i_n is a slave device's mi‐
+                nor device number; and _P_I_D_, _c_m_d_, _F_D and _m_o_d_e are the same as with pipe endpoint information.  Note: psudoterminal endpoint information is only available when the compile flags line of --VV output contains HASPTYEPT.
+
+                UNIX socket file endpoint information is displayed in the NAME column in the form
+                ``type=_T_Y_P_E ->INO=_I_N_O_D_E _P_I_D_,_c_m_d_,_F_D_m_o_d_e'', where _T_Y_P_E is the socket type; _I_N_O_D_E is the i-node number of the connected socket; and _P_I_D_, _c_m_d_, _F_D and _m_o_d_e are the same as with pipe endpoint information.  Note: UNIX socket file end‐
+                point information is available only when the compile flags line of --vv output contains HASUXSOCKEPT.
+
+                Multiple occurrences of this information can appear in a file's NAME column.
+
+                --EE specfies that Linux pipe and Linux UNIX socket files should be displayed with endpoint information, but not the files of the endpoints.
+

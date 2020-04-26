@@ -1,3 +1,4 @@
 bash declare
 zshall -z
 7 man .TP .PD .B .P .I
+lsof -E
