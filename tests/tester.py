@@ -65,6 +65,6 @@ with open('testlist.txt', 'r') as f:
             print("PASSED " + test)
         else:
             print("!! FAILED " + test)
-            store_results(path, expected, actual)
+            store_results(fname, expected, actual)
 
 
