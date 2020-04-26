@@ -156,6 +156,7 @@ for line_num, line in enumerate(man_input):
         res = re.match(my_re, line) or re.match(my_re, man_input_plain[line_num])
 
         if res:
+            logging.info("matched: {}".format(line))
             #
             # This is sheer frantic handwaving for things like this (From bash)
             #
@@ -192,10 +193,12 @@ for line_num, line in enumerate(man_input):
             term_indent = indent
 
     elif term_indent:
+        # If our indent is zero and there's some text (subsection heading)
         if (indent == 0 and len(line)) or (
               indent > 1 and (indent < term_indent or (not is_def and indent == term_indent)
            )):
             spacer = '\n' + ' ' * rs
+            logging.info(len(buf))
             if (len(buf) == 2 and indent == term_indent and line_def) or len(buf) > 2:
                 #
                 # This is a lot of fancy formatting. We want the
