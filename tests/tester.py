@@ -1,40 +1,61 @@
 #!/usr/bin/env python3
-import glob
 import os
 import sys
 import re
-import json
+import tempfile
 
 os.environ['MANWIDTH'] = '250'
+tempdir = None
+def params_to_fname(params):
+    return re.sub(' ', '_', params) + ".test"
+
+def store_results(path, expected, actual):
+    global tempdir
+    if not tempdir:
+        tempdir = tempfile.mkdtemp()
+        print("Using {} for failures".format(tempdir))
+
+    with open("{}/{}-expected".format(tempdir,path), 'w') as f:
+        f.write(expected)
+
+    with open("{}/{}-actual".format(tempdir,path), 'w') as f:
+        f.write(actual)
+
 if len(sys.argv) > 1:
     print("making test for arguments")
     args = sys.argv[1:]
-    fname = re.sub(' ', '_', ' '.join(args)) + ".test"
+    fname = params_to_fname(' '.join(args))
+
     if os.path.exists(fname):
         print("I'm not going to overwrite {}. Please remove it then rerun this.".format(fname))
         sys.exit(-1)
 
+    with open('testlist.txt', 'a') as f:
+        f.write("{}\n".format(' '.join(args)))
+
     with open(fname, 'w') as f:
         print("Creating {}".format(fname))
-        f.write("{}\n".format(json.dumps(args)))
         command = ' '.join(args)
         res = os.popen("../mansnip " + command).read()
-        print(res)
         f.write(res)
         sys.exit(0)
 
+with open('testlist.txt', 'r') as f:
+    testList = f.read().splitlines()
 
-for path in glob.glob("*.test"):
-    with open(path, 'r') as f:
-        expected = f.readlines()
-        command = ' '.join(json.loads(expected[0]))
-        result = expected[1:]
+    for test in testList:
+        fname = params_to_fname(test)
 
-    cmd = "../mansnip " + command
-    res = os.popen(cmd).read()
-    if res == expected:
-        print(cmd + "passed")
-    else:
-        print(cmd + "failed")
+        with open(fname, 'r') as f:
+            expected = f.read()
+
+        cmd = "../mansnip " + test
+        actual = os.popen(cmd).read()
+
+        if actual == expected:
+            print(cmd + " passed")
+        else:
+            print(cmd + " failed")
+            store_results(path, expected, actual)
 
 
