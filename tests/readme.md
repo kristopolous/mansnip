@@ -8,4 +8,4 @@ test format is
   [ ... expected output ... ]
 
 In order to make the line numbers match we are injecting
-a MANWIDTH=50 into all the executions
+a MANWIDTH=250 into all the executions
