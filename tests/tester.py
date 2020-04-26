@@ -44,6 +44,14 @@ with open('testlist.txt', 'r') as f:
     testList = f.read().splitlines()
 
     for test in testList:
+        if test == 'stop':
+            print("asked to stop")
+            sys.exit(0)
+
+        if test[0] == '#':
+            print("skipping {}".format(test))
+            continue
+
         fname = params_to_fname(test)
 
         with open(fname, 'r') as f:
