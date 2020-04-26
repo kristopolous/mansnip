@@ -5,7 +5,7 @@ To make new tests run this:
     $ ./tester.py (mansnip args)
 
 The test file is automatically created
-Then the args get appened to the testlist.txt
+Then the args get appened to the testlist.txt. They are stored in JSON to preserve the arglist
 
 To actually run the tests execute the following:
 

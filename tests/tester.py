@@ -3,6 +3,7 @@ import os
 import sys
 import re
 import tempfile
+import subprocess
 import json
 
 os.environ['MANWIDTH'] = '250'
@@ -36,8 +37,10 @@ if len(sys.argv) > 1:
 
     with open(fname, 'w') as f:
         print("Creating {}".format(fname))
-        command = ' '.join(args)
-        res = os.popen("../mansnip " + command).read()
+
+        p = subprocess.Popen(['../mansnip'] + args, stdout=subprocess.PIPE)
+        res = p.communicate()[0].decode("utf-8")
+
         print(res) 
         f.write(res)
         sys.exit(0)
@@ -46,7 +49,8 @@ with open('testlist.txt', 'r') as f:
     testList = f.read().splitlines()
 
     for testraw in testList:
-        test = ' '.join(json.loads(testraw))
+        testList = json.loads(testraw)
+        test = ' '.join(testList)
 
         if test == 'stop':
             print("asked to stop")
@@ -61,8 +65,8 @@ with open('testlist.txt', 'r') as f:
         with open(fname, 'r') as f:
             expected = f.read()
 
-        cmd = "../mansnip " + test
-        actual = os.popen(cmd).read()
+        p = subprocess.Popen(['../mansnip'] + testList, stdout=subprocess.PIPE)
+        actual = p.communicate()[0].decode("utf-8")
 
         if actual == expected:
             print("PASSED " + test)
