@@ -4,3 +4,4 @@ zshall -z
 lsof -E
 ffmpeg -c
 ls --ignore
+ls --inode --ignore
