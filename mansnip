@@ -78,6 +78,13 @@ logging.info(my_re)
 is_def = False
 line_def = False
 stack_start = False
+
+#
+# We want to be able to detect None versus 0 without the hassles
+# of False == 0 (which I know can be avoided, sure, ok fine, but
+# why introduce the possibility of bugs when you can easily avoid
+# that possibility?)
+#
 term_indent = None
 
 buf_start = False
@@ -107,6 +114,15 @@ man_input = man_input.split('\n')
 # space for the indentation.
 #
 rs = 5 if len(man_input) < 1e4 else 7
+
+#
+# Essentially we want to reduce our chances of false positives.
+# Because there's so many variations we can't do a single-pass
+# catch-all for everything. But what we can do is cast a somewhat
+# wide net with the regexs and then do a second-pass rejection
+# test with this function, essentially just looking for prose.
+def random_word_test(line):
+    pass
 
 line_num = -1
 while line_num + 1 < len(man_input):

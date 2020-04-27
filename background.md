@@ -81,7 +81,8 @@ Uh, yep.
 
 Man pages are ridiculously consistent as far as non-semantically structured text goes.  This tool usually works fine and if it doesn't, file a bug and go hunting and pecking like you usually do. I'll fix it eventually.
 
-Thanks. enjoy.
+Want even more background? Try `mansnip roff HISTORY`.
+
 
 ---
 
