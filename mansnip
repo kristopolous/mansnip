@@ -78,7 +78,7 @@ logging.info(my_re)
 is_def = False
 line_def = False
 stack_start = False
-term_indent = False
+term_indent = None
 
 buf_start = False
 buf = []
@@ -122,7 +122,6 @@ while line_num + 1 < len(man_input):
     indent_window = indent_window[-2:] + [indent]
 
     if len(line):
-        logging.debug(line)
 
         # Our nice stack guessing system essentially keeps a stack
         # of the indents and then based on the current indent either
@@ -209,7 +208,8 @@ while line_num + 1 < len(man_input):
             stack_start = stack_guess[:]
             term_indent = indent
 
-    elif term_indent:
+    elif term_indent != None:
+        logging.info(line)
         # If our indent is zero and there's some text (subsection heading)
         if (indent == 0 and len(line)) or (
               indent > 1 and (indent < term_indent or (not is_def and indent == term_indent)
@@ -263,7 +263,7 @@ while line_num + 1 < len(man_input):
             # it again because it could ALSO be the first line of a new match.
             line_num -= 1
             buf = []
-            term_indent = False
+            term_indent = None
             is_def = False
         else:
             # Once our formatting goes in we have to reset it 
