@@ -6,3 +6,4 @@
 ["ls", "--ignore"]
 ["ls", "--inode", "--ignore"]
 ["bash", "-z string"]
+["bash", "CONDITIONAL"]

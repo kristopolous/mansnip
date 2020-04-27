@@ -1,0 +1,93 @@
+1246 CCOONNDDIITTIIOONNAALL EEXXPPRREESSSSIIOONNSS
+       Conditional expressions are used by the [[[[ compound command and the tteesstt and [[ builtin commands to test file attributes and perform string and arithmetic comparisons.  The tteesstt abd [[ commands determine their behavior based on the number
+       of arguments; see the descriptions of those commands for any other command-specific actions.
+
+       Expressions are formed from the following unary or binary primaries.  BBaasshh handles several filenames specially when they are used in expressions.  If the operating system on which bbaasshh is running provides these special files, bash  will
+       use  them;  otherwise  it will emulate them internally with this behavior: If any _f_i_l_e argument to one of the primaries is of the form _/_d_e_v_/_f_d_/_n, then file descriptor _n is checked.  If the _f_i_l_e argument to one of the primaries is one of
+       _/_d_e_v_/_s_t_d_i_n, _/_d_e_v_/_s_t_d_o_u_t, or _/_d_e_v_/_s_t_d_e_r_r, file descriptor 0, 1, or 2, respectively, is checked.
+
+       Unless otherwise specified, primaries that operate on files follow symbolic links and operate on the target of the link, rather than the link itself.
+
+       When used with [[[[, the << and >> operators sort lexicographically using the current locale.  The tteesstt command sorts using ASCII ordering.
+
+       --aa _f_i_l_e
+              True if _f_i_l_e exists.
+       --bb _f_i_l_e
+              True if _f_i_l_e exists and is a block special file.
+       --cc _f_i_l_e
+              True if _f_i_l_e exists and is a character special file.
+       --dd _f_i_l_e
+              True if _f_i_l_e exists and is a directory.
+       --ee _f_i_l_e
+              True if _f_i_l_e exists.
+       --ff _f_i_l_e
+              True if _f_i_l_e exists and is a regular file.
+       --gg _f_i_l_e
+              True if _f_i_l_e exists and is set-group-id.
+       --hh _f_i_l_e
+              True if _f_i_l_e exists and is a symbolic link.
+       --kk _f_i_l_e
+              True if _f_i_l_e exists and its ``sticky'' bit is set.
+       --pp _f_i_l_e
+              True if _f_i_l_e exists and is a named pipe (FIFO).
+       --rr _f_i_l_e
+              True if _f_i_l_e exists and is readable.
+       --ss _f_i_l_e
+              True if _f_i_l_e exists and has a size greater than zero.
+       --tt _f_d  True if file descriptor _f_d is open and refers to a terminal.
+       --uu _f_i_l_e
+              True if _f_i_l_e exists and its set-user-id bit is set.
+       --ww _f_i_l_e
+              True if _f_i_l_e exists and is writable.
+       --xx _f_i_l_e
+              True if _f_i_l_e exists and is executable.
+       --GG _f_i_l_e
+              True if _f_i_l_e exists and is owned by the effective group id.
+       --LL _f_i_l_e
+              True if _f_i_l_e exists and is a symbolic link.
+       --NN _f_i_l_e
+              True if _f_i_l_e exists and has been modified since it was last read.
+       --OO _f_i_l_e
+              True if _f_i_l_e exists and is owned by the effective user id.
+       --SS _f_i_l_e
+              True if _f_i_l_e exists and is a socket.
+       _f_i_l_e_1 --eeff _f_i_l_e_2
+              True if _f_i_l_e_1 and _f_i_l_e_2 refer to the same device and inode numbers.
+       _f_i_l_e_1 -nntt _f_i_l_e_2
+              True if _f_i_l_e_1 is newer (according to modification date) than _f_i_l_e_2, or if _f_i_l_e_1 exists and _f_i_l_e_2 does not.
+       _f_i_l_e_1 -oott _f_i_l_e_2
+              True if _f_i_l_e_1 is older than _f_i_l_e_2, or if _f_i_l_e_2 exists and _f_i_l_e_1 does not.
+       --oo _o_p_t_n_a_m_e
+              True if the shell option _o_p_t_n_a_m_e is enabled.  See the list of options under the description of the --oo option to the sseett builtin below.
+       --vv _v_a_r_n_a_m_e
+              True if the shell variable _v_a_r_n_a_m_e is set (has been assigned a value).
+       --RR _v_a_r_n_a_m_e
+              True if the shell variable _v_a_r_n_a_m_e is set and is a name reference.
+       --zz _s_t_r_i_n_g
+              True if the length of _s_t_r_i_n_g is zero.
+       _s_t_r_i_n_g
+       --nn _s_t_r_i_n_g
+              True if the length of _s_t_r_i_n_g is non-zero.
+
+       _s_t_r_i_n_g_1 ==== _s_t_r_i_n_g_2
+       _s_t_r_i_n_g_1 == _s_t_r_i_n_g_2
+              True if the strings are equal.  == should be used with the tteesstt command for POSIX conformance.  When used with the [[[[ command, this performs pattern matching as described above (CCoommppoouunndd CCoommmmaannddss).
+
+       _s_t_r_i_n_g_1 !!== _s_t_r_i_n_g_2
+              True if the strings are not equal.
+
+       _s_t_r_i_n_g_1 << _s_t_r_i_n_g_2
+              True if _s_t_r_i_n_g_1 sorts before _s_t_r_i_n_g_2 lexicographically.
+
+       _s_t_r_i_n_g_1 >> _s_t_r_i_n_g_2
+              True if _s_t_r_i_n_g_1 sorts after _s_t_r_i_n_g_2 lexicographically.
+
+       _a_r_g_1 OOPP _a_r_g_2
+              OOPP is one of --eeqq, --nnee, --lltt, --llee, --ggtt, or --ggee.  These arithmetic binary operators return true if _a_r_g_1 is equal to, not equal to, less than, less than or equal to, greater than, or greater than or equal to _a_r_g_2, respectively.  _A_r_g_1
+              and _a_r_g_2 may be positive or negative integers.  When used with the [[[[ command, _A_r_g_1 and _A_r_g_2 are evaluated as arithmetic expressions  (see AARRIITTHHMMEETTIICC EEVVAALLUUAATTIIOONN above).
+
+2950 SSHHEELLLL BBUUIILLTTIINN CCOOMMMMAANNDDSS
+     tteesstt _e_x_p_r
+       [[ _e_x_p_r ]]
+              CCOONNDDIITTIIOONNAALL EEXXPPRREESSSSIIOONNSS.  tteesstt does not accept any options, nor does it accept and ignore an argument of ---- as signifying the end of options.
+
