@@ -3,6 +3,7 @@ import os
 import sys
 import re
 import tempfile
+import time
 import subprocess
 import json
 
@@ -62,14 +63,16 @@ with open('testlist.txt', 'r') as f:
 
         fname = params_to_fname(test)
 
-        with open(fname, 'r') as f:
+        with open("tests/" + fname, 'r') as f:
             expected = f.read()
 
+        start = time.time()
         p = subprocess.Popen(['../mansnip'] + testList, stdout=subprocess.PIPE)
         actual = p.communicate()[0].decode("utf-8")
+        runtime = "{:#.3g}".format(time.time() - start)
 
         if actual == expected:
-            print("PASSED " + test)
+            print(runtime + " PASSED " + test)
         else:
             print("!! FAILED " + test)
             store_results(fname, expected, actual)
