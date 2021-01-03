@@ -52,28 +52,36 @@ except Exception as ex:
 pack = sys.argv[cutoff:]
 
 opts = '|'.join(pack)
-my_re = ''.join([
-    '^\s*',
-    '(',
-             # lsof uses +|- syntax,
-            '(\+\||)',
 
-            # the term itself
-            '({})',
+def matcher(term):
+    return ''.join([
+        '^\s*',
+        '(',
+                 # lsof uses +|- syntax,
+                '(\+\||)',
 
-            # ffmpeg uses [ at times (see hwaccel), many things use ',' to show a second option.
-            # mmcli uses = a lot of the times
-            '([\s_\[=].*|, .*|)',
-        '|',
-            # this is for the long options, sometimes (git config) specified by commas
-            '-.*\s({})',
+                # the term itself
+                '({})',
 
-            # and kinda our same capture from above
-            '([\s_\[=].*|)',
-     ')$'
-   ]).format(opts, opts)
+                # ffmpeg uses [ at times (see hwaccel), many things use ',' to show a second option.
+                # mmcli uses = a lot of the times
+                '([\s_\[=].*|, .*|)',
+            '|',
+                # this is for the long options, sometimes (git config) specified by commas
+                '-.*\s({})',
 
-logging.info(my_re)
+                # and kinda our same capture from above
+                '([\s_\[=].*|)',
+         ')$'
+       ]).format(term, term)
+
+# the thing we are genuinely looking for
+my_re = matcher(opts)
+
+# a general purpose getopts re
+getopts_re = matcher('\w*')
+
+logging.info("The re for this search: {}".format(my_re))
 
 is_def = False
 line_def = False
@@ -188,7 +196,7 @@ while line_num + 1 < len(man_input):
         res = re.match(my_re, line) or re.match(my_re, man_input_plain[line_num])
 
         if res:
-            logging.info("matched: {}".format(line))
+            logging.info("matched : {}".format(line))
             #
             # This is sheer frantic handwaving for things like this (From bash)
             #
@@ -225,13 +233,18 @@ while line_num + 1 < len(man_input):
             term_indent = indent
 
     elif term_indent != None:
-        logging.info(line)
+        logging.info("consider: {}".format(line))
         # If our indent is zero and there's some text (subsection heading)
         if (indent == 0 and len(line)) or (
               indent > 1 and (indent < term_indent or (not is_def and indent == term_indent)
            )):
             spacer = '\n' + ' ' * rs
-            logging.info(len(buf))
+            logging.info("Current rows: {}".format( len(buf)) )
+
+            #print(line)
+            res = re.match(getopts_re, line) or re.match(getopts_re, man_input_plain[line_num])
+            #print(res)
+
             if (len(buf) == 2 and indent == term_indent and line_def) or len(buf) > 1:
                 #
                 # This is a lot of fancy formatting. We want the
