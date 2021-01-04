@@ -87,7 +87,7 @@ with open('testlist.txt', 'r') as f:
         start = time.time()
         p = subprocess.Popen(['../mansnip'] + testList, stdout=subprocess.PIPE)
         actual = p.communicate()[0].decode("utf-8")
-        runtime = "{:#.3g}".format(time.time() - start)
+        runtime = "{:#.3f}".format(time.time() - start)
 
         if actual == expected:
             print(runtime + " PASSED " + test)
