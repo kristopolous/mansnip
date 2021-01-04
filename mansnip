@@ -15,6 +15,7 @@ import sys, re, os, logging, pdb
 #
 
 logging.basicConfig(level=(os.environ.get('LOGLEVEL') or 'critical').upper())
+show_line_numbers = 'MANSNIP_TESTING_NOLINES' not in os.environ
 
 try:
     if len(sys.argv) < 3:
@@ -308,6 +309,10 @@ while line_num + 1 < len(man_input):
                 else:
                     stack_print = ''
                     buf[0] = re.sub('^\s{%d}' % rs, '', buf[0])
+
+                # This makes the tests more portable
+                if not show_line_numbers:
+                    buf_start = -1
 
                 print(("{:<%d}{}{}\n" % rs).format(buf_start, stack_print, '\n'.join(buf)))
 
