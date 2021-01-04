@@ -27,7 +27,7 @@ def store_results(path, expected, actual):
 if len(sys.argv) > 1:
     print("making test for arguments")
     args = sys.argv[1:]
-    fname = params_to_fname(' '.join(args))
+    fname = "tests/" + params_to_fname(' '.join(args))
 
     if os.path.exists(fname):
         print("I'm not going to overwrite {}. Please remove it then rerun this.".format(fname))
