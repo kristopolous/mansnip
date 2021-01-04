@@ -8,7 +8,10 @@ import subprocess
 import json
 
 os.environ['MANWIDTH'] = '250'
+os.environ['MANSNIP_TESTING_NOLINES'] = '1'
+
 tempdir = None
+test_filter = None
 def params_to_fname(params):
     return re.sub(' ', '_', params) + ".test"
 
@@ -24,27 +27,40 @@ def store_results(path, expected, actual):
     with open("{}/{}-actual".format(tempdir,path), 'w') as f:
         f.write(actual)
 
-if len(sys.argv) > 1:
-    print("making test for arguments")
+if len(sys.argv) == 2:
+    with open('testlist.txt', 'r') as f:
+        testList = f.read().splitlines()
+
+        for testraw in testList:
+            testList = json.loads(testraw)
+            test = ' '.join(testList)
+            print(test)
+
+    sys.exit(0)
+
+if len(sys.argv) > 2:
     args = sys.argv[1:]
-    fname = "tests/" + params_to_fname(' '.join(args))
+    test_filter = ' '.join(args)
+    fname = "tests/" + params_to_fname(test_filter)
 
     if os.path.exists(fname):
-        print("I'm not going to overwrite {}. Please remove it then rerun this.".format(fname))
-        sys.exit(-1)
+        sys.stderr.write("I'm not going to overwrite {}. If you want to replace it then remove it and this.\n".format(fname))
+        sys.stderr.write("Running single test.\n")
+        
+    else:
+        sys.stderr.write("making test for arguments\n")
+        with open('testlist.txt', 'a') as f:
+            f.write(json.dumps(args) + "\n")
 
-    with open('testlist.txt', 'a') as f:
-        f.write(json.dumps(args) + "\n")
+        with open(fname, 'w') as f:
+            print("Creating {}".format(fname))
 
-    with open(fname, 'w') as f:
-        print("Creating {}".format(fname))
+            p = subprocess.Popen(['../mansnip'] + args, stdout=subprocess.PIPE)
+            res = p.communicate()[0].decode("utf-8")
 
-        p = subprocess.Popen(['../mansnip'] + args, stdout=subprocess.PIPE)
-        res = p.communicate()[0].decode("utf-8")
-
-        print(res) 
-        f.write(res)
-        sys.exit(0)
+            print(res) 
+            f.write(res)
+            sys.exit(0)
 
 with open('testlist.txt', 'r') as f:
     testList = f.read().splitlines()
@@ -52,6 +68,8 @@ with open('testlist.txt', 'r') as f:
     for testraw in testList:
         testList = json.loads(testraw)
         test = ' '.join(testList)
+        if test_filter and test_filter != test:
+            continue
 
         if test == 'stop':
             print("asked to stop")
