@@ -1,8 +1,8 @@
-888  FFTTPP OOppttiioonnss
+-1   FFTTPP OOppttiioonnss
      ----nnoo--rreemmoovvee--lliissttiinngg
            --rr so the file will be overwritten.
 
-938  RReeccuurrssiivvee RReettrriieevvaall OOppttiioonnss
+-1   RReeccuurrssiivvee RReettrriieevvaall OOppttiioonnss
        --rr
        ----rreeccuurrssiivvee
            Turn on recursive retrieving.    The default maximum depth is 5.

@@ -1,4 +1,4 @@
-1246 CCOONNDDIITTIIOONNAALL EEXXPPRREESSSSIIOONNSS
+-1   CCOONNDDIITTIIOONNAALL EEXXPPRREESSSSIIOONNSS
        Conditional expressions are used by the [[[[ compound command and the tteesstt and [[ builtin commands to test file attributes and perform string and arithmetic comparisons.  The tteesstt abd [[ commands determine their behavior based on the number
        of arguments; see the descriptions of those commands for any other command-specific actions.
 
@@ -86,7 +86,7 @@
               OOPP is one of --eeqq, --nnee, --lltt, --llee, --ggtt, or --ggee.  These arithmetic binary operators return true if _a_r_g_1 is equal to, not equal to, less than, less than or equal to, greater than, or greater than or equal to _a_r_g_2, respectively.  _A_r_g_1
               and _a_r_g_2 may be positive or negative integers.  When used with the [[[[ command, _A_r_g_1 and _A_r_g_2 are evaluated as arithmetic expressions  (see AARRIITTHHMMEETTIICC EEVVAALLUUAATTIIOONN above).
 
-2950 SSHHEELLLL BBUUIILLTTIINN CCOOMMMMAANNDDSS
+-1   SSHHEELLLL BBUUIILLTTIINN CCOOMMMMAANNDDSS
      tteesstt _e_x_p_r
        [[ _e_x_p_r ]]
               CCOONNDDIITTIIOONNAALL EEXXPPRREESSSSIIOONNSS.  tteesstt does not accept any options, nor does it accept and ignore an argument of ---- as signifying the end of options.

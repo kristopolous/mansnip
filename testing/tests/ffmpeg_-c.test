@@ -1,4 +1,4 @@
-435  MMaaiinn ooppttiioonnss
+-1   MMaaiinn ooppttiioonnss
        --cc[[::_s_t_r_e_a_m___s_p_e_c_i_f_i_e_r]] _c_o_d_e_c ((_i_n_p_u_t_/_o_u_t_p_u_t_,_p_e_r_-_s_t_r_e_a_m))
        --ccooddeecc[[::_s_t_r_e_a_m___s_p_e_c_i_f_i_e_r]] _c_o_d_e_c ((_i_n_p_u_t_/_o_u_t_p_u_t_,_p_e_r_-_s_t_r_e_a_m))
            Select an encoder (when used before an output file) or a decoder (when used before an input file) for one or more streams. _c_o_d_e_c is the name of a decoder/encoder or a special value "copy" (output only) to indicate that the stream is

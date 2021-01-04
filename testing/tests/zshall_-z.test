@@ -1,20 +1,20 @@
-1371   CCOONNDDIITTIIOONNAALL EEXXPPRREESSSSIIOONNSS
+-1     CCOONNDDIITTIIOONNAALL EEXXPPRREESSSSIIOONNSS
        --zz _s_t_r_i_n_g
               true if length of _s_t_r_i_n_g is zero.
 
-5777   SSHHEELLLL BBUUIILLTTIINN CCOOMMMMAANNDDSS
+-1     SSHHEELLLL BBUUIILLTTIINN CCOOMMMMAANNDDSS
        pprriinntt [ --aabbccDDiillmmnnNNooOOppPPrrssSSzz ] [ --uu _n ] [ --ff _f_o_r_m_a_t ] [ --CC _c_o_l_s ]
        [ --vv _n_a_m_e ] [ --xxXX _t_a_b_s_t_o_p ] [ --RR [ --eenn ]] [ _a_r_g ... ]
               --zz     Push the arguments onto the editing buffer stack, separated by spaces.
 
               If any of `--mm', `--oo' or `--OO' are used in combination with `--ff' and there are no arguments (after the removal process in the case of `--mm') then nothing is printed.
 
-5839   rreeaadd [ --rrsszzppqqAAccllnneeEE ] [ --tt [ _n_u_m ] ] [ --kk [ _n_u_m ] ] [ --dd _d_e_l_i_m ]
+-1     rreeaadd [ --rrsszzppqqAAccllnneeEE ] [ --tt [ _n_u_m ] ] [ --kk [ _n_u_m ] ] [ --dd _d_e_l_i_m ]
        [ --uu _n ] [ _n_a_m_e[??_p_r_o_m_p_t] ] [ _n_a_m_e ...  ]
               --zz     Read  one entry from the editor buffer stack and assign it to the first _n_a_m_e, without word splitting.  Text is pushed onto the stack with `pprriinntt --zz' or with ppuusshh--lliinnee from the line editor (see _z_s_h_z_l_e(1)).  This flag is ig‐
                      nored when the --kk or --qq flags are present.
 
-6382   zzccoommppiillee [ --UU ] [ --zz | --kk ] [ --RR | --MM ] _f_i_l_e [ _n_a_m_e ... ]
+-1     zzccoommppiillee [ --UU ] [ --zz | --kk ] [ --RR | --MM ] _f_i_l_e [ _n_a_m_e ... ]
        zzccoommppiillee --ccaa [ --mm ] [ --RR | --MM ] _f_i_l_e [ _n_a_m_e ... ]
        zzccoommppiillee --tt _f_i_l_e [ _n_a_m_e ... ]
               --zz     These options are used when the compiled file contains functions which are to be autoloaded. If --zz is given, the function will be autoloaded as if the KKSSHH__AAUUTTOOLLOOAADD option is _n_o_t set, even if it is set at the time the  com‐
@@ -26,7 +26,7 @@
                      The created file always contains two versions of the compiled format, one for big-endian machines and one for small-endian machines.  The upshot of this is that the compiled file is machine independent and if it is read or
                      mapped, only one half of the file is actually used (and mapped).
 
-11596  OOPPTTIIOONN FFLLAAGGSS
+-1     OOPPTTIIOONN FFLLAAGGSS
        SSiimmppllee FFllaaggss
        --zz     Names of suspended jobs.
 

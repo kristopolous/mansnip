@@ -1,4 +1,4 @@
-2397 SSHHEELLLL BBUUIILLTTIINN CCOOMMMMAANNDDSS
+-1   SSHHEELLLL BBUUIILLTTIINN CCOOMMMMAANNDDSS
        ddeeccllaarree [--aaAAffFFggiillnnrrttuuxx] [--pp] [_n_a_m_e[=_v_a_l_u_e] ...]
        ttyyppeesseett [--aaAAffFFggiillnnrrttuuxx] [--pp] [_n_a_m_e[=_v_a_l_u_e] ...]
               Declare  variables and/or give them attributes.  If no _n_a_m_es are given then display the values of variables.  The --pp option will display the attributes and values of each _n_a_m_e.  When --pp is used with _n_a_m_e arguments, additional op‐

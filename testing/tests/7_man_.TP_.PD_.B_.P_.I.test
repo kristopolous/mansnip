@@ -1,14 +1,14 @@
-46   FFoonnttss
+-1   FFoonnttss
        ..BB  Bold
 
-52     ..II  Italics
+-1     ..II  Italics
 
-79   NNoorrmmaall ppaarraaggrraapphhss
+-1   NNoorrmmaall ppaarraaggrraapphhss
        ..PP       Same as ..PPPP (begin a new paragraph).
 
-96   IInnddeenntteedd ppaarraaggrraapphh mmaaccrrooss
+-1   IInnddeenntteedd ppaarraaggrraapphh mmaaccrrooss
        ..TTPP _i    Begin paragraph with hanging tag.  The tag is given on the next line, but its results are like those of the ..IIPP command.
 
-112  MMiisscceellllaanneeoouuss mmaaccrrooss
+-1   MMiisscceellllaanneeoouuss mmaaccrrooss
        ..PPDD _d    Set inter-paragraph vertical distance to d (if omitted, d=0.4v); does not cause a break.
 

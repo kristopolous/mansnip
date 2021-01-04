@@ -1,4 +1,4 @@
-174    ++||--EE     ++EE specifies that Linux pipe, Linux UNIX socket and Linux pseudoterminal files should be displayed with endpoint information and the files of the endpoints should also be displayed.  Note: UNIX socket file endpoint  information
+-1     ++||--EE     ++EE specifies that Linux pipe, Linux UNIX socket and Linux pseudoterminal files should be displayed with endpoint information and the files of the endpoints should also be displayed.  Note: UNIX socket file endpoint  information
                 is only available when the compile flags line of --vv output contains HASUXSOCKEPT, and psudoterminal endpoint information is only available when the compile flags line contains HASPTYEPT.
 
                 Pipe endpoint information is displayed in the NAME column in the form ``_P_I_D_,_c_m_d_,_F_D_m_o_d_e'', where _P_I_D is the endpoint process ID; _c_m_d is the endpoint process command; _F_D is the endpoint file's descriptor; and _m_o_d_e is the endpoint

@@ -1,6 +1,6 @@
-90     --ii, ----iinnooddee
+-1     --ii, ----iinnooddee
               print the index number of each file
 
-93     --II, ----iiggnnoorree=_P_A_T_T_E_R_N
+-1     --II, ----iiggnnoorree=_P_A_T_T_E_R_N
               do not list implied entries matching shell PATTERN
 
