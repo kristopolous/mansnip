@@ -19,7 +19,7 @@ def store_results(path, expected, actual):
     global tempdir
     if not tempdir:
         tempdir = tempfile.mkdtemp()
-        print("Using {} for failures".format(tempdir))
+        print("      Using {} for failures".format(tempdir))
 
     with open("{}/{}-expected".format(tempdir,path), 'w') as f:
         f.write(expected)
@@ -90,9 +90,9 @@ with open('testlist.txt', 'r') as f:
         runtime = "{:#.3f}".format(time.time() - start)
 
         if actual == expected:
-            print(runtime + " PASSED " + test)
+            print(runtime + "    OK     " + test)
         else:
-            print("!! FAILED " + test)
             store_results(fname, expected, actual)
+            print(runtime + " !! FAILED " + test)
 
 
