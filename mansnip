@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import sys, re, os, logging
+import sys, re, os, logging, pdb
 
 # less and others have a number of things like this 
 #
@@ -68,7 +68,8 @@ def matcher(term):
                 '([\s_\[=].*|, .*|)',
             '|',
                 # this is for the long options, sometimes (git config) specified by commas
-                '-.*\s({})',
+                #'-.*\s({})',
+                '-.*({})',
 
                 # and kinda our same capture from above
                 '([\s_\[=].*|)',
@@ -79,12 +80,13 @@ def matcher(term):
 my_re = matcher(opts)
 
 # a general purpose getopts re
-getopts_re = matcher('\w*')
+getopts_simple_re = '^\s+(-{1,2}\w+\s?)+\s*$'
 
 logging.info("The re for this search: {}".format(my_re))
 
 is_def = False
 line_def = False
+multiline_def = False
 stack_start = False
 
 #
@@ -234,16 +236,37 @@ while line_num + 1 < len(man_input):
 
     elif term_indent != None:
         logging.info("consider: {}".format(line))
+
+        # This tests if we have a format like in wget, something like
+        #
+        #       -r
+        #       --recursive
+        #           Turn on recursive retrieving.    The default maximum depth is 5.
+        #
+        #       -l depth
+        #       --level=depth
+        #           Specify recursion maximum depth level depth.
+        #
+        # In this case we're ok with not increasing indentation as long as we match
+        # a general getopts RE
+
+        is_multiline_def = re.match(getopts_simple_re, line) or re.match(getopts_simple_re, man_input_plain[line_num])
+
+        #print(is_multiline_def, '\n\t', "[{}]".format(line), '\n\t',  "[{}]".format(man_input_plain[line_num]), '\n\t')
         # If our indent is zero and there's some text (subsection heading)
         if (indent == 0 and len(line)) or (
-              indent > 1 and (indent < term_indent or (not is_def and indent == term_indent)
+              indent > 1 and (
+                  indent < term_indent or (
+                      # If we have the same indentation but we've determined it's a 
+                      # "multiline" definition.
+                      indent == term_indent and not ( 
+                          is_def or is_multiline_def
+                      )
+                 )
            )):
             spacer = '\n' + ' ' * rs
             logging.info("Current rows: {}".format( len(buf)) )
 
-            #print(line)
-            res = re.match(getopts_re, line) or re.match(getopts_re, man_input_plain[line_num])
-            #print(res)
 
             if (len(buf) == 2 and indent == term_indent and line_def) or len(buf) > 1:
                 #
