@@ -8,3 +8,4 @@
 ["bash", "-z string"]
 ["bash", "CONDITIONAL"]
 ["wget", "-r"]
+["awk", "-f"]

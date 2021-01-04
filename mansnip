@@ -81,7 +81,7 @@ def matcher(term):
 my_re = matcher(opts)
 
 # a general purpose getopts re
-getopts_simple_re = '^\s+(-{1,2}\w+\s?)+\s*$'
+getopts_simple_re = '^\s+(-{1,2}\w+\s?\w*)+\s*$'
 
 logging.info("The re for this search: {}".format(my_re))
 

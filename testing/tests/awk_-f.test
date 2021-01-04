@@ -1,0 +1,4 @@
+-1     --ff _p_r_o_g_r_a_m_-_f_i_l_e
+       ----ffiillee _p_r_o_g_r_a_m_-_f_i_l_e
+              Read the AWK program source from the file _p_r_o_g_r_a_m_-_f_i_l_e, instead of from the first command line argument.  Multiple --ff (or ----ffiillee) options may be used.
+
