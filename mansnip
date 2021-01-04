@@ -194,7 +194,7 @@ while line_num + 1 < len(man_input):
 
     if not len(buf):
 
-        # See if our ansi escaped or plain text version has what we are looking for.
+        # See if our ANSI escaped or plain text version has what we are looking for.
         # yes that makes it a bit slower, but not as slow as doing it manually.
         res = re.match(my_re, line) or re.match(my_re, man_input_plain[line_num])
 
@@ -233,25 +233,38 @@ while line_num + 1 < len(man_input):
             buf.append(line)
             buf_start = line_num
             stack_start = stack_guess[:]
+            is_multiline_def = True
             term_indent = indent
 
     elif term_indent != None:
         logging.info("consider: {}".format(line))
 
+        #
         # This tests if we have a format like in wget, something like
         #
-        #       -r
-        #       --recursive
-        #           Turn on recursive retrieving.    The default maximum depth is 5.
+        #   -r
+        #   --recursive
+        #       Turn on recursive retrieving.    The default maximum depth is 5.
         #
-        #       -l depth
-        #       --level=depth
-        #           Specify recursion maximum depth level depth.
+        #   -l depth
+        #   --level=depth
+        #       Specify recursion maximum depth level depth.
         #
         # In this case we're ok with not increasing indentation as long as we match
-        # a general getopts RE
-
-        is_multiline_def = re.match(getopts_simple_re, line) or re.match(getopts_simple_re, man_input_plain[line_num])
+        #
+        # What is this boolean flippin' nonsense then? We allow essentially the following
+        #
+        #   --A           <- These three should be chained.
+        #   --B
+        #   --C
+        #     blah blah   <- Once we reach this indent further
+        #     blah blah   <- chaining should be prohibited 
+        #
+        #   --D           <- This should be excluded.
+        #
+        if is_multiline_def:
+            if not (re.match(getopts_simple_re, line) or re.match(getopts_simple_re, man_input_plain[line_num])):
+                is_multiline_def = False
 
         #print(is_multiline_def, '\n\t', "[{}]".format(line), '\n\t',  "[{}]".format(man_input_plain[line_num]), '\n\t')
         # If our indent is zero and there's some text (subsection heading)
