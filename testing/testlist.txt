@@ -7,3 +7,4 @@
 ["ls", "--inode", "--ignore"]
 ["bash", "-z string"]
 ["bash", "CONDITIONAL"]
+["wget", "-r"]
