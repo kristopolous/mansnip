@@ -109,7 +109,7 @@ last_stack_guess = []
 # Words we can just leave out of the breadcrumb.
 filler_terms = ['DESCRIPTION','OPTIONS']
 
-clean_ansi = lambda w: re.sub('(.\x08)', '', w)
+clean_ansi = lambda w: re.sub('(.\x08|\x1B\[\d*m)', '', w)
 
 #
 # There's lots of let's say "creative" ways to format man pages, so
