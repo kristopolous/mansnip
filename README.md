@@ -26,7 +26,7 @@ Simply use it the way you use man, at the command line, followed by your search 
 
 Watch how mansnip can immediately find `bash(1)'s` declare without any extra effort:
 
-![mansnip is amazing](https://9ol.es/msfade.webp)
+![mansnip is amazing](https://9ol.es/msfade.png)
 
 Mansnip works on any manpage.
 
@@ -34,7 +34,7 @@ Mansnip works on any manpage.
 
 See how mansnip obediently shows everything with a "-z" option in the 25,888 lines of the [zshall manpage](http://gsp.com/cgi-bin/man.cgi?section=1&topic=zshall) on a single screen, all at once, in an easy-to-read manner.
 
-![zshall for all](https://9ol.es/mansnip.webp)
+![zshall for all](https://9ol.es/mansnip.png)
 
 But wait, there's more! You'll also get the line number and hierarchical context totally free!
 
