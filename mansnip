@@ -67,14 +67,14 @@ def matcher(term):
                 # ffmpeg uses [ at times (see hwaccel), many things use ',' to show a second option.
                 # mmcli uses = a lot of the times
                 r'([\s_\[=].*|, .*|)',
-            '|',
+            r'|',
                 # this is for the long options, sometimes (git config) specified by commas
                 #'-.*\s({})',
                 r'-.*({})',
 
                 # and kinda our same capture from above
                 r'([\s_\[=].*|)',
-         ')$'
+         r')$'
        ]).format(term, term)
 
 # the thing we are genuinely looking for
