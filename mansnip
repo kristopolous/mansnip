@@ -56,32 +56,32 @@ opts = '|'.join(pack)
 
 def matcher(term):
     return ''.join([
-        '^\s*',
-        '(',
+        r'^\s*',
+        r'(',
                  # lsof uses +|- syntax,
-                '(\+\||)',
+                r'(\+\||)',
 
                 # the term itself
-                '({})',
+                r'({})',
 
                 # ffmpeg uses [ at times (see hwaccel), many things use ',' to show a second option.
                 # mmcli uses = a lot of the times
-                '([\s_\[=].*|, .*|)',
-            '|',
+                r'([\s_\[=].*|, .*|)',
+            r'|',
                 # this is for the long options, sometimes (git config) specified by commas
                 #'-.*\s({})',
-                '-.*({})',
+                r'-.*({})',
 
                 # and kinda our same capture from above
-                '([\s_\[=].*|)',
-         ')$'
+                r'([\s_\[=].*|)',
+         r')$'
        ]).format(term, term)
 
 # the thing we are genuinely looking for
 my_re = matcher(opts)
 
 # a general purpose getopts re
-getopts_simple_re = '^\s+(-{1,2}\w+\s?\w*)+\s*$'
+getopts_simple_re = r'^\s+(-{1,2}\w+\s?\w*)+\s*$'
 
 logging.info("The re for this search: {}".format(my_re))
 
@@ -109,7 +109,7 @@ last_stack_guess = []
 # Words we can just leave out of the breadcrumb.
 filler_terms = ['DESCRIPTION','OPTIONS']
 
-clean_ansi = lambda w: re.sub('(.\x08|\x1B\[\d*m)', '', w)
+clean_ansi = lambda w: re.sub(r'(.\x08|\x1B\[\d*m)', '', w)
 
 #
 # There's lots of let's say "creative" ways to format man pages, so
@@ -145,7 +145,7 @@ while line_num + 1 < len(man_input):
     # Establish the "indent", this is crucial to how essentially 
     # everything works.
     #
-    indent = re.match('^(\s*)', line).end()
+    indent = re.match(r'^(\s*)', line).end()
     indent_window = indent_window[-2:] + [indent]
 
     if len(line):
@@ -321,7 +321,7 @@ while line_num + 1 < len(man_input):
                     stack_print += "\n"
                 else:
                     stack_print = ''
-                    buf[0] = re.sub('^\s{%d}' % rs, '', buf[0])
+                    buf[0] = re.sub(r'^\s{%d}' % rs, '', buf[0])
 
                 # This makes the tests more portable
                 if not show_line_numbers:
