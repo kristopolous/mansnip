@@ -32,6 +32,9 @@ try:
 
     man_input = os.popen(cmd).read()
 
+    if not show_line_numbers:
+         print(f"Excerpts from man {sys.argv[1]}:")
+
 except Exception as ex:
     from textwrap import dedent
     print(dedent("""\
@@ -136,6 +139,7 @@ def random_word_test(line):
     pass
 
 line_num = -1
+
 while line_num + 1 < len(man_input):
     line_num += 1
 
