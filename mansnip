@@ -15,7 +15,7 @@ import sys, re, os, logging, pdb
 #
 
 logging.basicConfig(level=(os.environ.get('LOGLEVEL') or 'critical').upper())
-show_line_numbers = 'MANSNIP_TESTING_NOLINES' not in os.environ
+show_line_numbers = 'MANSNIP_LLM' not in os.environ
 
 try:
     if len(sys.argv) < 3:
@@ -325,9 +325,9 @@ while line_num + 1 < len(man_input):
 
                 # This makes the tests more portable
                 if not show_line_numbers:
-                    buf_start = -1
-
-                print(("{:<%d}{}{}\n" % rs).format(buf_start, stack_print, '\n'.join(buf)))
+                    print(clean_ansi("{}{}\n".format(stack_print, '\n'.join(buf))))
+                else:
+                    print(("{:<%d}{}{}\n" % rs).format(buf_start, stack_print, '\n'.join(buf)))
 
             # if this was the line we decided to reset everything on then we should actually process
             # it again because it could ALSO be the first line of a new match.
