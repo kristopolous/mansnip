@@ -49,6 +49,11 @@ except Exception as ex:
 
     $ mansnip tar -x -z -v -f
 
+      But wait! There's more! We are in the world of LLM so you can do
+      MANSNIP_LLM=1 mansnip tar -x -z -v -f
+
+      and then get a snapshot that you can just dump into your context window
+
       Have fun."""))
     logging.info(ex)
     sys.exit(-1)
@@ -321,7 +326,10 @@ while line_num + 1 < len(man_input):
                 if len(stack_small) > 1:
                     stack_print = stack_small[0]
                     if len(stack_small) > 2:
-                        stack_print += spacer + spacer.join(stack_small[1:-1])
+                        if not show_line_numbers:
+                            stack_print += '#' * spacer 
+                        else:
+                            stack_print += spacer + spacer.join(stack_small[1:-1])
                     stack_print += "\n"
                 else:
                     stack_print = ''
