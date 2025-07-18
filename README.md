@@ -9,14 +9,15 @@ $ MANSNIP_LLM=1 mansnip ...
 This will do a variety of things (try it yourself) that optimize for minimal token-length when using an llm. 
 
 ```bash
-$ man bash | token-count
+$ man bash | token-count                            # whole page
 73392
-$ mansnip bash complete | token-count
+$ man bash | grep -C 3 complete | token-count       # naive approach with a bunch of garage input
+8833
+$ mansnip bash complete | token-count               # mansnip without llm feature
 2908
-$ MANSNIP_LLM=1 mansnip bash complete | token-count
+$ MANSNIP_LLM=1 mansnip bash complete | token-count # with new llm compaction!
 1624
 ```
-
 That's a 98% reduction! Sweet.
 
 ## My classic 2020 pitch below!
