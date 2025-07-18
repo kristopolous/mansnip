@@ -11,7 +11,7 @@ This will do a variety of things (try it yourself) that optimize for minimal tok
 ```bash
 $ man bash | token-count                            # whole page
 73392
-$ man bash | grep -C 3 complete | token-count       # naive approach with a bunch of garage input
+$ man bash | grep -C 3 complete | token-count       # naive approach with a bunch of garbage input
 8833
 $ mansnip bash complete | token-count               # mansnip without llm feature
 2908
