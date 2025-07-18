@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import sys, re, os, logging, pdb
+import sys, re, os, logging, pdb, math, subprocess
 
 # less and others have a number of things like this 
 #
@@ -15,7 +15,7 @@ import sys, re, os, logging, pdb
 #
 
 logging.basicConfig(level=(os.environ.get('LOGLEVEL') or 'critical').upper())
-show_line_numbers = 'MANSNIP_LLM' not in os.environ
+llm = 'MANSNIP_LLM' in os.environ
 
 try:
     if len(sys.argv) < 3:
@@ -27,12 +27,23 @@ try:
 
     # Some people use cygwin
     # You may gladly throw me in python prison for this line...
-    cmd = ' '.join(['/usr/bin/man' if os.path.exists('/usr/bin') else 'man'] + sys.argv[1:cutoff])
+    cmd = ['/usr/bin/man' if os.path.exists('/usr/bin') else 'man'] + sys.argv[1:cutoff]
     logging.info(cmd)
 
-    man_input = os.popen(cmd).read()
+    env = os.environ.copy()
+    if llm:
+        env["MANWIDTH"] = "8192"
 
-    if not show_line_numbers:
+    proc = subprocess.Popen(
+        cmd,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        env=env,
+        text=True 
+    )
+    man_input, stderr = proc.communicate()
+
+    if llm:
          print(f"Excerpts from man {sys.argv[1]}:")
 
 except Exception as ex:
@@ -275,7 +286,6 @@ while line_num + 1 < len(man_input):
             if not (re.match(getopts_simple_re, line) or re.match(getopts_simple_re, man_input_plain[line_num])):
                 is_multiline_def = False
 
-        #print(is_multiline_def, '\n\t', "[{}]".format(line), '\n\t',  "[{}]".format(man_input_plain[line_num]), '\n\t')
         # If our indent is zero and there's some text (subsection heading)
         if (indent == 0 and len(line)) or (
               indent > 1 and (
@@ -326,17 +336,33 @@ while line_num + 1 < len(man_input):
                 if len(stack_small) > 1:
                     stack_print = stack_small[0]
                     if len(stack_small) > 2:
-                        if not show_line_numbers:
-                            stack_print += '#' * spacer 
-                        else:
+                        if not llm:
                             stack_print += spacer + spacer.join(stack_small[1:-1])
                     stack_print += "\n"
                 else:
                     stack_print = ''
                     buf[0] = re.sub(r'^\s{%d}' % rs, '', buf[0])
 
+                if llm:
+                    for x in range(len(buf)):
+                        i = buf[x]
+                        pre = ''
+                        leading = len(i) - len(i.lstrip())
+                        #print("(" + i[:50])
+                        if leading < 2 and len(i) > 2:
+                            pre = '# '
+                        elif leading < 8 and len(i) > 5:
+                            pre = '## '
+                        else:
+                            pre = ' ' * math.floor(leading/8)
+                        buf[x] = pre + re.sub(r'\s+', ' ', i[leading:])
+
+                    if len(stack_print) > 0:
+                        stack_print = "# " + stack_print
+
+
                 # This makes the tests more portable
-                if not show_line_numbers:
+                if llm:
                     print(clean_ansi("{}{}\n".format(stack_print, '\n'.join(buf))))
                 else:
                     print(("{:<%d}{}{}\n" % rs).format(buf_start, stack_print, '\n'.join(buf)))
