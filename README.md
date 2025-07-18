@@ -1,4 +1,4 @@
-### woahhh updates!
+## Woahhh updates for the AI era!
 
 So this handy tool has been updated for the llm era. You can mansnip into your context window by setting an environment variable like this:
 
@@ -18,6 +18,8 @@ $ MANSNIP_LLM=1 mansnip bash complete | token-count
 ```
 
 That's a 98% reduction! Sweet.
+
+## My classic 2020 pitch below!
 
 <p align="center">
   
