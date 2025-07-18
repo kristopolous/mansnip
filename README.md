@@ -1,6 +1,6 @@
-## Woahhh updates for the AI era!
+## Updates for the AI era!
 
-So this handy tool has been updated for the llm era. You can mansnip into your context window by setting an environment variable like this:
+You can now intelligently mansnip into your context window by setting an environment variable like this:
 
 ```bash
 $ MANSNIP_LLM=1 mansnip ...
