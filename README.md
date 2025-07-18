@@ -1,3 +1,24 @@
+### woahhh updates!
+
+So this handy tool has been updated for the llm era. You can mansnip into your context window by setting an environment variable like this:
+
+```bash
+$ MANSNIP_LLM=1 mansnip ...
+```
+
+This will do a variety of things (try it yourself) that optimize for minimal token-length when using an llm. 
+
+```bash
+$ man bash | token-count
+73392
+$ mansnip bash complete | token-count
+2908
+$ MANSNIP_LLM=1 mansnip bash complete | token-count
+1624
+```
+
+That's a 98% reduction! Sweet.
+
 <p align="center">
   
 [![Video](https://9ol.es/vid.jpg)](http://www.youtube.com/watch?v=3GT1J-ejM3Q)
