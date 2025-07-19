@@ -8,6 +8,8 @@ $ MANSNIP_LLM=1 mansnip ...
 
 This will do a variety of things (try it yourself) that optimize for minimal token-length when using an llm. 
 
+Compare various approaches for finding the documentation for bash's complete command: 
+
 ```bash
 $ man bash | token-count                            # whole page
 73392
